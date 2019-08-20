@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_174728) do
+ActiveRecord::Schema.define(version: 2019_08_20_181456) do
+
+  create_table "games", force: :cascade do |t|
+    t.date "day"
+    t.time "time"
+    t.string "winner"
+    t.integer "total"
+    t.string "home"
+    t.string "away"
+    t.integer "handicap"
+    t.integer "hscore"
+    t.integer "ascore"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -20,11 +34,42 @@ ActiveRecord::Schema.define(version: 2019_08_20_174728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "picks", force: :cascade do |t|
+    t.integer "tiebreaker"
+    t.integer "user_id"
+    t.integer "week_id"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "abrv"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "venmo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.integer "number"
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

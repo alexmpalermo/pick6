@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: MyString
+  time: MyString
+  winner: MyString
+  total: MyString
+  home: MyString
+  away: MyString
+  handicap: MyString
+  hscore: MyString
+  ascore: MyString
+
+two:
+  day: MyString
+  time: MyString
+  winner: MyString
+  total: MyString
+  home: MyString
+  away: MyString
+  handicap: MyString
+  hscore: MyString
+  ascore: MyString

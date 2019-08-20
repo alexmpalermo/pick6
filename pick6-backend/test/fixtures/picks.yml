@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tiebreaker: MyString
+  user_id: MyString
+  week_id: MyString
+  points: MyString
+
+two:
+  tiebreaker: MyString
+  user_id: MyString
+  week_id: MyString
+  points: MyString
