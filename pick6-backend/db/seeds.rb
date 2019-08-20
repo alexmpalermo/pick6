@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: "Alex", email: "alexmpalermo@gmail.com", password: "password", venmo: "alexp73")
-User.create(name: "Donna", email: "donna.lowe@henryschein.com", password: "password", venmo: "dlowe616")
-User.create(name: "Bob", email: "bob@gmail.com", password: "password")
+alex = User.create(name: "Alex", email: "alexmpalermo@gmail.com", password: "password", venmo: "alexp73")
+donna = User.create(name: "Donna", email: "donna.lowe@henryschein.com", password: "password", venmo: "dlowe616")
+bob = User.create(name: "Bob", email: "bob@gmail.com", password: "password")
 
-Group.create(name: "Team Schein", price: 5, code: "1e044a08f")
+groupschein = Group.create(name: "Team Schein", price: 5, code: "1e044a08f")
 
 Role.create(name: "developer", user_id: 1)
 Role.create(name: "admin", user_id: 2, group_id: 1)
