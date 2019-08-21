@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import Login from './Login.js'
 import Logout from './Logout.js'
 
-const Navbar = ({ currentUser }) => {
+const Navbar = (props) => {
   return (
-    <div>
-      {currentUser ? <Logout /> : null}
+    <div className="Navbar">
+
+      {props.currentUser ? <Logout /> : null}
     </div>
   )
 }
