@@ -1,14 +1,10 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login.js'
+import { connect } from 'react-redux'
+import { getCurrentUser } from './actions/currentUser.js'
 
 class App extends React.Component {
-
-//  componentDidMount() {
-//    fetch("http://localhost:3000/api/v1/users/1")
-//    .then(r => r.json())
-//    .then(console.log)
-//  }
 
   render() {
     return (
@@ -20,4 +16,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+componentDidMount() {
+  this.props.getCurrentUser()
+}
+
+export default connect(null, { getCurrentUser })(App);
