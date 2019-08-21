@@ -6,8 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-
-const users = () => []
+import users from './reducers/users.js'
 
 const reducer = combineReducers({
   users
