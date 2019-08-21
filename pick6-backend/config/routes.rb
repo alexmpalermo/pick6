@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/api/v1/login", to: "api/v1/sessions#create"
 
   # I want my api to be pick6.com/api/v1/resource
   namespace :api do
