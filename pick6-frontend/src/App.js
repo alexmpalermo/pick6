@@ -1,23 +1,25 @@
 import React from 'react';
 import './App.css';
-import Login from './components/Login.js'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser.js'
+import Login from './components/Login.js'
+import Navbar from './components/Navbar.js'
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.getCurrentUser()
+  }
 
   render() {
     return (
       <div className="App">
+        <Navbar />
         <h1>Hello i'm react</h1>
-        <Login />
+        {this.props.currentUser ? null : <Login />}
       </div>
     );
   }
-}
-
-componentDidMount() {
-  this.props.getCurrentUser()
 }
 
 export default connect(null, { getCurrentUser })(App);
