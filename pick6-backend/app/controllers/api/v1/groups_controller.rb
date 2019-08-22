@@ -5,7 +5,7 @@ class Api::V1::GroupsController < ApplicationController
   def index
     if logged_in?
       @groups = current_user.groups
-      render json: @groups
+      render json: GroupSerializer.new(@groups), status: :ok
     else
       render json: {
         error: "You must be logged in to see groups"
