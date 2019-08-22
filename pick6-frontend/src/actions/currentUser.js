@@ -57,7 +57,6 @@ export const getCurrentUser = () => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        console.log("From getcurrntuser user is:", resp.data.attributes)
         dispatch(setCurrentUser(resp.data.attributes))
       }
     })
