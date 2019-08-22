@@ -12,6 +12,7 @@ bob = User.create(name: "Bob", email: "bob@gmail.com", password: "password")
 
 groupschein = Group.create(name: "Team Schein", price: 5, code: "1e044a08f", adminid: 2)
 
+
 ######## Teams
 
 Team.create(name: "Arizona Cardinals", abrv: "ARI")   #1
