@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm.js'
+import { getMyGroups } from './myGroups.js'
 
 // sync
 
@@ -32,6 +33,7 @@ export const login = credentials => {
       } else {
         dispatch(setCurrentUser(resp.data.attributes))
         dispatch(resetLoginForm())
+        dispatch(getMyGroups())
       }
     })
     .catch(console.log)
@@ -61,6 +63,7 @@ export const getCurrentUser = () => {
         alert(resp.error)
       } else {
         dispatch(setCurrentUser(resp.data.attributes))
+        dispatch(getMyGroups())
       }
     })
     .catch(console.log)

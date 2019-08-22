@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_181456) do
+ActiveRecord::Schema.define(version: 2019_08_22_211632) do
 
   create_table "games", force: :cascade do |t|
     t.date "day"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_181456) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "adminid"
   end
 
   create_table "picks", force: :cascade do |t|
@@ -39,14 +40,6 @@ ActiveRecord::Schema.define(version: 2019_08_20_181456) do
     t.integer "user_id"
     t.integer "week_id"
     t.integer "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

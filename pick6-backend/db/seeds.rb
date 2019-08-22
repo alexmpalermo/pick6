@@ -10,12 +10,7 @@ alex = User.create(name: "Alex", email: "alexmpalermo@gmail.com", password: "pas
 donna = User.create(name: "Donna", email: "donna.lowe@henryschein.com", password: "password", venmo: "dlowe616")
 bob = User.create(name: "Bob", email: "bob@gmail.com", password: "password")
 
-groupschein = Group.create(name: "Team Schein", price: 5, code: "1e044a08f")
-
-Role.create(name: "developer", user_id: 1)
-Role.create(name: "admin", user_id: 2, group_id: 1)
-Role.create(name: "member", user_id: 3, group_id: 1)
-Role.create(name: "member", user_id: 1, group_id: 1)
+groupschein = Group.create(name: "Team Schein", price: 5, code: "1e044a08f", adminid: 2)
 
 ######## Teams
 
