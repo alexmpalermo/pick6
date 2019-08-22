@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser.js'
 import Login from './components/Login.js'
 import Navbar from './components/Navbar.js'
+import UserShow from './components/UserShow.js'
 
 class App extends React.Component {
 
@@ -15,11 +16,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
-        <h1>Hello i'm react</h1>
+        <UserShow />
         {this.props.currentUser ? null : <Login />}
       </div>
     );
   }
 }
 
-export default connect(null, { getCurrentUser })(App);
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps, { getCurrentUser })(App);

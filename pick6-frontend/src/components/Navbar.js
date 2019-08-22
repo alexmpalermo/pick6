@@ -6,7 +6,7 @@ import Logout from './Logout.js'
 const Navbar = (props) => {
   return (
     <div className="Navbar">
-
+      <h1>Pick6</h1>
       {props.currentUser ? <Logout /> : null}
     </div>
   )
