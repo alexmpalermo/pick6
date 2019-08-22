@@ -3,9 +3,14 @@ class Api::V1::GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.all
-
-    render json: @groups
+    if logged_in?
+      @groups = current_user.groups
+      render json: @groups
+    else
+      render json: {
+        error: "You must be logged in to see groups"
+      }
+    end
   end
 
   # GET /groups/1
