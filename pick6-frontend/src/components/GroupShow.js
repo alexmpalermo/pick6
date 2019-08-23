@@ -6,11 +6,11 @@ const GroupShow = ({ group }) => {
     group ?
       <div>
         <h3>{group.attributes.name}</h3>
-        <p>{group.attributes.start_date}</p>
-        <p>{group.attributes.end_date}</p>
+        <p>{group.attributes.price}</p>
+        <p>{group.attributes.code}</p>
         <button>Edit this group</button>
       </div> :
-      <p>This the the Group show with no groups!</p>
+      <p>This the the Group show with no group!</p>
   )
 }
 
