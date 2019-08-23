@@ -26,7 +26,8 @@ class App extends React.Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/groups' component={Groups} />
           <Route exact path='/groups/:id' render={props => {
-              const group = groups.find(g => g.id === props.match.params.id)
+              const group = groups.find(group => group.id === props.match.params.id)
+              console.log(groups)
               console.log(group)
               return <GroupShow group={group} {...props}/>
             }
@@ -36,7 +37,7 @@ class App extends React.Component {
     );
   }
 }
-
+//
 const mapStateToProps = state => {
   return {
     currentUser: state.current_user,
