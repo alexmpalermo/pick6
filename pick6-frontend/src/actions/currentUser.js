@@ -40,6 +40,28 @@ export const login = credentials => {
   }
 }
 
+export const signup = credentials => {
+  return dispatch => {
+    return fetch("http://localhost:3001/api/v1/signup", {
+      credentials: "include",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials)
+    })
+    .then(r => r.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        dispatch(setCurrentUser(resp.data.attributes))
+        dispatch(resetSignupForm())
+        dispatch(getMyGroups())
+      }
+    })
+    .catch(console.log)
+  }
+}
+
 export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())

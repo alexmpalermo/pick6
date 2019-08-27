@@ -47,6 +47,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :email, :password_digest, :venmo)
+      params.require(:user).permit(:name, :email, :venmo, :password, :password_confirmation)
     end
 end
