@@ -1,5 +1,6 @@
 import { resetLoginForm } from './loginForm.js'
 import { getMyGroups } from './myGroups.js'
+import { resetSignupForm } from './signupForm.js'
 
 // sync
 
