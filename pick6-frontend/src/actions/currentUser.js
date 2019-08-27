@@ -1,5 +1,5 @@
 import { resetLoginForm } from './loginForm.js'
-import { getMyGroups } from './myGroups.js'
+import { getMyGroups, clearGroups } from './myGroups.js'
 import { resetSignupForm } from './signupForm.js'
 
 // sync
@@ -68,6 +68,7 @@ export const signup = (credentials, history) => {
 export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())
+    dispatch(clearGroups())
     return fetch("http://localhost:3001/api/v1/logout", {
       credentials: "include",
       method: "DELETE"

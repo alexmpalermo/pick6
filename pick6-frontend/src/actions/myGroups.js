@@ -7,6 +7,12 @@ export const setMyGroups = groups => {
   }
 }
 
+export const clearGroups = () => {
+  return {
+    type: "CLEAR_GROUPS"
+  }
+}
+
 // async
 
 export const getMyGroups = () => {
