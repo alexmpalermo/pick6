@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Navlink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Login from './Login.js'
 import Logout from './Logout.js'
 
@@ -8,7 +8,7 @@ const Navbar = (props) => {
   return (
     <div className="Navbar">
       <h1>Pick6</h1>
-      {props.currentUser ? <Navlink exact activeClass to="/groups/new">New Group</Navlink> : null}
+      {props.currentUser ? <NavLink to="/groups/new">New Group</NavLink> : null}
       {props.currentUser ? <Logout /> : null}
     </div>
   )
