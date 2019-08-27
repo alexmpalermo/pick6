@@ -24,9 +24,12 @@ class Api::V1::GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      render json: @group, status: :created, location: @group
+      render json: GroupSerializer.new(@group), status: :created
     else
-      render json: @group.errors, status: :unprocessable_entity
+      resp = {
+        error: @group.errors.full_messages.to_sentence
+      }
+      render json: resp, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +55,6 @@ class Api::V1::GroupsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def group_params
-      params.require(:group).permit(:name, :price, :code)
+      params.require(:group).permit(:name, :price, :code, :adminid)
     end
 end

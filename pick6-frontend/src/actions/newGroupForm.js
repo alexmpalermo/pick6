@@ -4,3 +4,9 @@ export const updateNewGroupForm = (name, value) => {
     formData: {name, value}
   }
 }
+
+export const resetNewGroupForm = () => {
+  return {
+    type: "RESET_NEW_GROUP_FORM"
+  }
+}

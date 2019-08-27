@@ -1,3 +1,5 @@
+import { resetNewGroupForm } from './newGroupForm.js'
+
 // sync
 
 export const setMyGroups = groups => {
@@ -42,14 +44,14 @@ export const getMyGroups = () => {
   }
 }
 
-export const createGroup = groupData => {
+export const createGroup = (groupData, history) => {
   return dispatch => {
     const sendableGroupData = {
       group: {
         name: groupData.name,
         price: groupData.price
         adminid: groupData.adminid,
-        code: groupData.code 
+        code: groupData.code
       }
     }
     return fetch("http://localhost:3001/api/v1/groups", {
@@ -61,7 +63,15 @@ export const createGroup = groupData => {
       body: JSON.stringify(sendableGroupData)
     })
     .then(r => r.json())
-    .then(console.log)
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        dispatch(addGroup(resp.data))
+        dispatch(resetNewGroupForm())
+        history.push(`/groups/#{resp.data.id}`)
+      }
+    })
     .catch(console.log)
   }
 }
