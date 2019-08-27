@@ -9,6 +9,7 @@ import UserShow from './components/UserShow.js'
 import Home from './components/Home.js'
 import Groups from './components/Groups.js'
 import GroupShow from './components/GroupShow.js'
+import Signup from './components/Signup.js'
 
 class App extends React.Component {
 
@@ -24,6 +25,7 @@ class App extends React.Component {
         { loggedIn ? <UserShow /> : <Home/> }
         <Switch>
           <Route exact path='/login' component={Login}/>
+          <Route exact path='/signup' component={Signup}/>
           <Route exact path='/groups' component={Groups} />
           <Route exact path='/groups/:id' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
