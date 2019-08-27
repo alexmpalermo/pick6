@@ -22,8 +22,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
-        { loggedIn ? <UserShow /> : <Home/> }
         <Switch>
+          <Route exact path='/' render={()=> loggedIn ? <UserShow /> : <Home/>} />
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/groups' component={Groups} />
