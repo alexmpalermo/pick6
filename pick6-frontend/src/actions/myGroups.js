@@ -44,13 +44,24 @@ export const getMyGroups = () => {
 
 export const createGroup = groupData => {
   return dispatch => {
+    const sendableGroupData = {
+      group: {
+        name: groupData.name,
+        price: groupData.price
+        adminid: groupData.adminid,
+        code: groupData.code 
+      }
+    }
     return fetch("http://localhost:3001/api/v1/groups", {
       credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: groupData
+      body: JSON.stringify(sendableGroupData)
     })
+    .then(r => r.json())
+    .then(console.log)
+    .catch(console.log)
   }
 }
