@@ -2,7 +2,8 @@ const initialState = {
   name: "",
   price: "",
   code: "",
-  admin: ""
+  admin: "",
+  users: []
 }
 
 
@@ -11,7 +12,7 @@ export default (state = initialState, action) => {
     case "UPDATE_NEW_GROUP_FORM":
       return {
         ...state,
-        [action.formData.name]: action.formData.value 
+        [action.formData.name]: action.formData.value
       }
     case "RESET_NEW_GROUP_FORM":
       return initialState

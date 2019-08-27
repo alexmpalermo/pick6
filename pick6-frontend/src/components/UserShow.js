@@ -6,7 +6,7 @@ const UserShow = (props) => {
 
   return (
     <div className="UserShow">
-      {props.currentUser ? <h2>Welcome, {props.currentUser.name}!</h2> : null }
+      {props.currentUser ? <h2>Welcome, {props.currentUser.attributes.name}!</h2> : null }
       <Groups groups={props.groups}/>
     </div>
   )

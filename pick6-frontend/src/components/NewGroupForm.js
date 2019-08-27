@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateNewGroupForm } from '../actions/newGroupForm.js'
-import { createGroups } from '../actions/myGroups.js'
+import { createGroup } from '../actions/myGroups.js'
 
 const NewGroupForm = ({ formData, adminid, code, history, updateNewGroupForm, createGroup}) => {
 
@@ -22,10 +22,7 @@ const NewGroupForm = ({ formData, adminid, code, history, updateNewGroupForm, cr
   }
 
   return (
-    <form onSubmit={event => {
-      event.preventDefault()
-      handleSubmit(formData)
-    }}>
+    <form onSubmit={handleSubmit}>
       <input placeholder="group name" type="text" name="name" value={formData.name} onChange={handleChange} /><br/>
       <input placeholder="weekly pick sheet price" type="number" min="0" name="price" value={formData.price} onChange={handleChange} /><br/>
       <input type="submit" value="Create Group" />

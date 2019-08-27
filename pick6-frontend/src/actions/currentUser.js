@@ -32,7 +32,7 @@ export const login = (credentials, history) => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        dispatch(setCurrentUser(resp.data.attributes))
+        dispatch(setCurrentUser(resp.data))
         dispatch(resetLoginForm())
         dispatch(getMyGroups())
         history.push('/')
@@ -55,7 +55,7 @@ export const signup = (credentials, history) => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        dispatch(setCurrentUser(resp.data.attributes))
+        dispatch(setCurrentUser(resp.data))
         dispatch(resetSignupForm())
         dispatch(getMyGroups())
         history.push('/')
@@ -88,7 +88,7 @@ export const getCurrentUser = () => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        dispatch(setCurrentUser(resp.data.attributes))
+        dispatch(setCurrentUser(resp.data))
         dispatch(getMyGroups())
       }
     })

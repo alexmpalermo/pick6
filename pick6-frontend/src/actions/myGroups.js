@@ -36,7 +36,6 @@ export const getMyGroups = () => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        console.log(resp.data)
         dispatch(setMyGroups(resp.data))
       }
     })
@@ -49,9 +48,9 @@ export const createGroup = (groupData, history) => {
     const sendableGroupData = {
       group: {
         name: groupData.name,
-        price: groupData.price
+        price: groupData.price,
         adminid: groupData.adminid,
-        code: groupData.code
+        code: groupData.code,
       }
     }
     return fetch("http://localhost:3001/api/v1/groups", {
@@ -69,7 +68,7 @@ export const createGroup = (groupData, history) => {
       } else {
         dispatch(addGroup(resp.data))
         dispatch(resetNewGroupForm())
-        history.push(`/groups/#{resp.data.id}`)
+        history.push(`/`)
       }
     })
     .catch(console.log)

@@ -22,6 +22,7 @@ class Api::V1::GroupsController < ApplicationController
   # POST /groups
   def create
     @group = Group.new(group_params)
+    @group.users << User.find_by_id(params[:group][:adminid])
 
     if @group.save
       render json: GroupSerializer.new(@group), status: :created
