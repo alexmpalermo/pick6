@@ -65,7 +65,7 @@ export const signup = (credentials, history) => {
   }
 }
 
-export const logout = () => {
+export const logout = event => {
   return dispatch => {
     dispatch(clearCurrentUser())
     dispatch(clearGroups())

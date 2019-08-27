@@ -13,6 +13,13 @@ export const clearGroups = () => {
   }
 }
 
+export const addGroup = group => {
+  return {
+    type: "ADD_GROUP",
+    group
+  }
+}
+
 // async
 
 export const getMyGroups = () => {
@@ -32,5 +39,18 @@ export const getMyGroups = () => {
       }
     })
     .catch(console.log)
+  }
+}
+
+export const createGroup = groupData => {
+  return dispatch => {
+    return fetch("http://localhost:3001/api/v1/groups", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: groupData
+    })
   }
 }
