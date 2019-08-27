@@ -19,7 +19,7 @@ export const clearCurrentUser = () => {
 
 // async
 
-export const login = credentials => {
+export const login = (credentials, history) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/login", {
       credentials: "include",
@@ -35,13 +35,14 @@ export const login = credentials => {
         dispatch(setCurrentUser(resp.data.attributes))
         dispatch(resetLoginForm())
         dispatch(getMyGroups())
+        history.push('/')
       }
     })
     .catch(console.log)
   }
 }
 
-export const signup = credentials => {
+export const signup = (credentials, history) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/signup", {
       credentials: "include",
@@ -57,6 +58,7 @@ export const signup = credentials => {
         dispatch(setCurrentUser(resp.data.attributes))
         dispatch(resetSignupForm())
         dispatch(getMyGroups())
+        history.push('/')
       }
     })
     .catch(console.log)

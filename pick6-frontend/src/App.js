@@ -10,6 +10,7 @@ import Home from './components/Home.js'
 import Groups from './components/Groups.js'
 import GroupShow from './components/GroupShow.js'
 import Signup from './components/Signup.js'
+import NewGroupForm from './components/NewGroupForm.js'
 
 class App extends React.Component {
 
@@ -23,10 +24,11 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path='/' render={()=> loggedIn ? <UserShow /> : <Home/>} />
+          <Route exact path='/' render={(props)=> loggedIn ? <UserShow {...props}/> : <Home {...props}/>} />
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/groups' component={Groups} />
+          <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
               console.log(groups)

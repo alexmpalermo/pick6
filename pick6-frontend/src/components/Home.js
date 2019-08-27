@@ -5,7 +5,7 @@ import Signup from './Signup.js'
 
 
 
-const Home = ({}) => (
+const Home = () => (
   <div>
     <span>
       <p><Link to="/signup">Sign Up</Link></p> or <p><Link to="/login">Log In</Link></p>
