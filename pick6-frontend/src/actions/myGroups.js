@@ -133,7 +133,7 @@ export const deleteGroup = (groupId, history) => {
           alert(resp.error)
         } else {
           dispatch(deleteGroupSuccess(groupId))
-          history.push(`/groups`)
+          history.push(`/`)
         }
       })
       .catch(console.log)
