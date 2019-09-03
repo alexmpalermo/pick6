@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateEditGroupForm } from '../actions/editGroupForm.js'
+import { updateEditGroupForm, setFormDataForEdit } from '../actions/editGroupForm.js'
 import { updateGroup, deleteGroup } from '../actions/myGroups.js'
 
+
 const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGroup, deleteGroup}) => {
+
+  
 
   const {name, price} = formData
   const groupId = group ? group.id : null

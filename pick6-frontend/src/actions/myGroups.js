@@ -109,6 +109,7 @@ export const updateGroup = (groupData, history) => {
           alert(resp.error)
         } else {
           dispatch(updateGroupSuccess(resp.data))
+          dispatch(resetEditGroupForm())
           history.push(`/groups/${resp.data.id}`)
         }
       })
