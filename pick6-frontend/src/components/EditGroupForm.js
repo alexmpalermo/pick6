@@ -7,7 +7,6 @@ const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGr
 
   const {name, price} = formData
   const groupId = group ? group.id : null
-  console.log(group)
 
   const handleChange = event => {
     const {name, value} = event.target
