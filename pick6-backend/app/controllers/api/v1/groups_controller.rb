@@ -36,16 +36,26 @@ class Api::V1::GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   def update
-    if @group.update(group_params)
-      render json: @group
-    else
-      render json: @group.errors, status: :unprocessable_entity
-    end
-  end
+   if @group.update(group_params)
+     render json:  GroupSerializer.new(@group), status: :ok
+   else
+     error_resp = {
+       error: @group.errors.full_messages.to_sentence
+     }
+     render json: error_resp, status: :unprocessable_entity
+   end
+ end
 
   # DELETE /groups/1
   def destroy
-    @group.destroy
+    if @group.destroy
+      render json: { data: "Group successfully destroyed" }, status: :ok
+    else
+      error_resp = {
+        error: "Group not found and not destroyed"
+      }
+      render json: error_resp, status: :unprocessable_entity
+    end
   end
 
   private
