@@ -74,3 +74,7 @@ export const createGroup = (groupData, history) => {
     .catch(console.log)
   }
 }
+
+export const updateGroup = ......
+
+export const deleteGroup = ......
