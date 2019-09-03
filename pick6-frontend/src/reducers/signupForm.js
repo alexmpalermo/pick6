@@ -3,7 +3,7 @@ const initialState = {
   email: "",
   venmo: "",
   password: "",
-  password_confirmation: "",
+  password_confirmation: ""
 }
 
 
