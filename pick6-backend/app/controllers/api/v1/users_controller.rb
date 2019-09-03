@@ -17,8 +17,6 @@ class Api::V1::UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    @user.password = params[:password]
-    @user.password_confirmation = params[:password_confirmation]
     if @user.save
       session[:user_id] = @user.id
       render json: UserSerializer.new(@user).serialized_json, status: :created
