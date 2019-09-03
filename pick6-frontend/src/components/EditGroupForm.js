@@ -6,6 +6,7 @@ import { updateGroup, deleteGroup } from '../actions/myGroups.js'
 const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGroup, deleteGroup}) => {
 
   const {name, price} = formData
+  const groupId = group ? group.id : null
 
   const handleChange = event => {
     const {name, value} = event.target
@@ -16,7 +17,7 @@ const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGr
     event.preventDefault()
     updateGroup({
       ...formData,
-      groupId: group.id
+      groupId
     }, history)
   }
 
@@ -26,6 +27,8 @@ const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGr
       <input placeholder={group.price} type="number" min="0" name="price" value={formData.price} onChange={handleChange} /><br/>
       <input type="submit" value="Edit Group" />
     </form>
+    <br/> 
+    <button style={{color: "red"}} onClick={()=>deleteGroup(groupId, history)}>Delete this group</button>
   )
 }
 
