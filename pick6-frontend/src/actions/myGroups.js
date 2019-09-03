@@ -1,5 +1,5 @@
 import { resetNewGroupForm } from './newGroupForm.js'
-
+import { resetEditGroupForm } from './editGroupForm.js'
 // sync
 
 export const setMyGroups = groups => {
@@ -18,6 +18,20 @@ export const clearGroups = () => {
 export const addGroup = group => {
   return {
     type: "ADD_GROUP",
+    group
+  }
+}
+
+export const deleteGroupSuccess = groupId => {
+  return {
+    type: "DELETE_GROUP",
+    groupId
+  }
+}
+
+export const updateGroupSuccess = group => {
+  return {
+    type: "UPDATE_GROUP",
     group
   }
 }
@@ -75,6 +89,52 @@ export const createGroup = (groupData, history) => {
   }
 }
 
-export const updateGroup = ......
+export const updateGroup = (groupData, history) => {
+  return dispatch => {
+    const sendableGroupData = {
+      name: groupData.name,
+      price: groupData.price
+    }
+    return fetch(`http://localhost:3001/api/v1/groups/${groupData.groupId}`, {
+      credentials: "include",
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sendableGroupData)
+    })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(updateGroupSuccess(resp.data))
+          history.push(`/groups/${resp.data.id}`)
+        }
+      })
+      .catch(console.log)
 
-export const deleteGroup = ......
+  }
+}
+
+export const deleteGroup = (groupId, history) => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/v1/groups/${groupId}`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(deleteGroupSuccess(groupId))
+          history.push(`/groups`)
+        }
+      })
+      .catch(console.log)
+  }
+}
