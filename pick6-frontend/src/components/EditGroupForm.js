@@ -7,6 +7,7 @@ const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGr
 
   const {name, price} = formData
   const groupId = group ? group.id : null
+  console.log(group)
 
   const handleChange = event => {
     const {name, value} = event.target
@@ -22,13 +23,15 @@ const EditGroupForm = ({ formData, group, history, updateEditGroupForm, updateGr
   }
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
-      <input placeholder={group.name} type="text" name="name" value={formData.name} onChange={handleChange} /><br/>
-      <input placeholder={group.price} type="number" min="0" name="price" value={formData.price} onChange={handleChange} /><br/>
+      <input placeholder={group.attributes.name} type="text" name="name" value={formData.name} onChange={handleChange} /><br/>
+      <input placeholder={group.attributes.price} type="number" min="0" name="price" value={formData.price} onChange={handleChange} /><br/>
       <input type="submit" value="Edit Group" />
     </form>
-    <br/> 
-    <button style={{color: "red"}} onClick={()=>deleteGroup(groupId, history)}>Delete this group</button>
+
+      <br/><button style={{color: "red"}} onClick={()=>deleteGroup(groupId, history)}>Delete this group</button>
+    </>
   )
 }
 

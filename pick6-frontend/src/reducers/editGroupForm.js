@@ -1,9 +1,6 @@
 const initialState = {
   name: "",
-  price: "",
-  code: "",
-  admin: "",
-  users: []
+  price: ""
 }
 
 
