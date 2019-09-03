@@ -11,6 +11,7 @@ import Groups from './components/Groups.js'
 import GroupShow from './components/GroupShow.js'
 import Signup from './components/Signup.js'
 import NewGroupForm from './components/NewGroupForm.js'
+import EditGroupForm from './components/EditGroupForm.js'
 
 class App extends React.Component {
 
@@ -31,9 +32,12 @@ class App extends React.Component {
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
-              console.log(groups)
-              console.log(group)
               return <GroupShow group={group} {...props}/>
+            }
+          }/>
+          <Route exact path='/groups/:id/edit' render={props => {
+              const group = groups.find(group => group.id === props.match.params.id)
+              return <EditGroupForm group={group} {...props}/>
             }
           }/>
         </Switch>

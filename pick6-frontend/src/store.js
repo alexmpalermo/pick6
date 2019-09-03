@@ -6,6 +6,7 @@ import loginForm from './reducers/loginForm.js'
 import myGroups from './reducers/myGroups.js'
 import signupForm from './reducers/signupForm.js'
 import newGroupForm from './reducers/newGroupForm.js'
+import editGroupForm from './reducers/editGroupForm.js'
 
 const reducer = combineReducers({
   users,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
   loginForm,
   myGroups,
   signupForm,
-  newGroupForm
+  newGroupForm,
+  editGroupForm
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
