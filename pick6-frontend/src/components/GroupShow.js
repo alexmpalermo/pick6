@@ -4,8 +4,6 @@ import EditGroupForm from './EditGroupForm.js'
 import { connect } from 'react-redux'
 
 const GroupShow = (props) => {
-  console.log("groupshow...", props)
-  console.log("groupshow group... ", props.group)
 
   return (
     <div className="group-show">

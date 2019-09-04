@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Groups = ({ groups, user }) => {
-  console.log("in groups...", user)
+const Groups = ({ groups }) => {
 
   return (
     groups.length > 0 ?
