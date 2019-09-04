@@ -9,6 +9,8 @@ const Navbar = (props) => {
     <div className="Navbar">
       <h1>Pick6</h1>
       {props.currentUser ? <NavLink to="/groups/new">New Group</NavLink> : null}
+      <br/>
+      {props.currentUser ? <NavLink to="/">Home</NavLink> : null}
       {props.currentUser ? <Logout /> : null}
     </div>
   )
