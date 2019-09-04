@@ -1,29 +1,33 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import EditGroupForm from './EditGroupForm.js'
+import { connect } from 'react-redux'
 
-
-const GroupShow = ({ group, userid }) => {
-  console.log("in groupshow..", userid)
-
+const GroupShow = (props, { group }) => {
+  console.log("groupshow...", props.currentUser)
 
   return (
 
-    // { (group && group.adminid === user.id) ?
-    //   <Link to={`/groups/${group.id}/edit`}>Edit this group</Link>
-    //   : null
-    // }
-
     group ?
-      <div>
-        <h3>{group.attributes.name}</h3>
-        <p>{group.attributes.price}</p>
-        <p>{group.attributes.code}</p>
-      </div> :
+      <><h3>{group.attributes.name}</h3>
+      <h4>{group.attributes.price}</h4>
+      <h4>{group.attributes.code}</h4></> :
       <p>This the the Group show with no group!</p>
-
 
   )
 }
 
-export default GroupShow
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps)(GroupShow)
+
+
+// {group && parseInt(group.attributes.adminid) === parseInt(userid) ? (
+//   <Link to={`/groups/${group.id}/edit`}>Edit this group</Link>
+// ) : (
+//   null
+// )}
