@@ -15,8 +15,14 @@ class Api::V1::GroupsController < ApplicationController
 
   # GET /groups/1
   def show
-
-    render json: @group
+    @group = Group.find_by_id(params[:id])
+    if logged_in? && @group.users.include?(current_user)
+      render json: GroupSerializer.new(@group), status: :ok
+    else
+      render json: {
+        error: "You must be logged in to see groups"
+      }
+    end
   end
 
   # POST /groups

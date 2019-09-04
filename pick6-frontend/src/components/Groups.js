@@ -1,15 +1,14 @@
 import React from 'react'
-import GroupShow from './GroupShow.js'
 import { Link } from 'react-router-dom'
 
-const Groups = ({ groups }) => {
-  const groupShow = groups.map(g => <GroupShow group={g} key={g.attributes.code} />)
+const Groups = ({ groups, user }) => {
+
 
   return (
     groups.length > 0 ?
       <div className="group-list">
         {groups.map((group) => {
-          return <p key={group.id}><Link to={`/groups/${group.id}`}>{group.attributes.name}</Link></p>
+          return <p key={group.id}><Link to={{ pathname: `/groups/${group.id}`, state: {userid: `${user.id}`} }}>{group.attributes.name}</Link></p>
           }
         )}
       </div> :

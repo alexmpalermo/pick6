@@ -32,7 +32,7 @@ class App extends React.Component {
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
-              return <GroupShow group={group} {...props}/>
+              return <GroupShow group={group} userid={props.location.state.userid} {...props}/>
             }
           }/>
           <Route exact path='/groups/:id/edit' render={props => {
