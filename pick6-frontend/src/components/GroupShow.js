@@ -3,17 +3,15 @@ import {Link} from 'react-router-dom'
 import EditGroupForm from './EditGroupForm.js'
 import { connect } from 'react-redux'
 
-const GroupShow = (props, { group }) => {
-  console.log("groupshow...", props.currentUser)
+const GroupShow = (props) => {
+  console.log("groupshow...", props)
+  console.log("groupshow group... ", props.group)
 
   return (
-
-    group ?
-      <><h3>{group.attributes.name}</h3>
-      <h4>{group.attributes.price}</h4>
-      <h4>{group.attributes.code}</h4></> :
-      <p>This the the Group show with no group!</p>
-
+    <div className="group-show">
+      {props.group && parseInt(props.group.attributes.adminid) === parseInt(props.currentUser.id) ? <Link to={`/groups/${props.group.id}/edit`}>Edit this group</Link> : null}
+      {props.group ? <><h3>{props.group.attributes.name}</h3><h4>{props.group.attributes.price}</h4><h4>{props.group.attributes.code}</h4></> : <p>This the the Group show with no group!</p>}
+    </div>
   )
 }
 
