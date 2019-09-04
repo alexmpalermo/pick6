@@ -40,6 +40,18 @@ class Api::V1::GroupsController < ApplicationController
     end
   end
 
+  # POST /groups/join
+  def join
+   if @group = Group.find_by(code: params[:group][:code])
+     @group.users << current_user unless @group.users.include?(current_user)
+     render json:  GroupSerializer.new(@group), status: :ok
+   else
+     render json: {
+       error: "This code doesn't match any groups"
+     }, status: :unprocessable_entity
+   end
+ end
+
   # PATCH/PUT /groups/1
   def update
    if @group.update(group_params)

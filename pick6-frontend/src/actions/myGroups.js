@@ -1,5 +1,7 @@
 import { resetNewGroupForm } from './newGroupForm.js'
 import { resetEditGroupForm } from './editGroupForm.js'
+import { resetJoinGroupForm } from './joinGroupForm.js'
+
 // sync
 
 export const setMyGroups = groups => {
@@ -35,6 +37,7 @@ export const updateGroupSuccess = group => {
     group
   }
 }
+
 
 // async
 
@@ -134,6 +137,35 @@ export const deleteGroup = (groupId, history) => {
         } else {
           dispatch(deleteGroupSuccess(groupId))
           history.push(`/`)
+        }
+      })
+      .catch(console.log)
+  }
+}
+
+export const joinGroup = (groupData, history) => {
+  return dispatch => {
+    const sendableGroupData = {
+      code: groupData.code
+    }
+    console.log(groupData)
+    return fetch(`http://localhost:3001/api/v1/groups/join`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sendableGroupData)
+    })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(addGroup(resp.data))
+          dispatch(updateGroupSuccess(resp.data))
+          dispatch(resetJoinGroupForm())
+          history.push(`/groups/${resp.data.id}`)
         }
       })
       .catch(console.log)
