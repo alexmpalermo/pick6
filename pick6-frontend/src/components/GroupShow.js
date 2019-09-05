@@ -16,7 +16,6 @@ const GroupShow = (props) => {
       {props.group ?
         <><h3>{props.group.attributes.name}</h3>
         <h4>{props.group.attributes.price}</h4>
-        <h4>{props.group.attributes.code}</h4>
         <GroupCodeShow group={props.group} /></> :
         <p>This the the Group show with no group!</p>
       }
