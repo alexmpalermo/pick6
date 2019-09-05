@@ -22,10 +22,11 @@ const JoinGroup = ({ formData, currentUser, history, updateJoinGroupForm, joinGr
   }
 
   return (
+    <><h4>Join A Group</h4>
     <form onSubmit={handleSubmit}>
       <input placeholder="group code" type="text" name="code" value={formData.code} onChange={handleChange} />
       <input type="submit" value="Join Group" />
-    </form>
+    </form></>
   )
 }
 

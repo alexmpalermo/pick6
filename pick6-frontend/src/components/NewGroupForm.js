@@ -22,11 +22,12 @@ const NewGroupForm = ({ formData, adminid, code, history, updateNewGroupForm, cr
   }
 
   return (
+    <><h2>Create A New Group</h2>
     <form onSubmit={handleSubmit}>
       <input placeholder="group name" type="text" name="name" value={formData.name} onChange={handleChange} /><br/>
       <input placeholder="weekly pick sheet price" type="number" min="0" name="price" value={formData.price} onChange={handleChange} /><br/>
       <input type="submit" value="Create Group" />
-    </form>
+    </form></>
   )
 }
 
