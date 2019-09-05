@@ -9,14 +9,13 @@ const GroupShow = (props) => {
   return (
     <div className="group-show">
       {props.group && parseInt(props.group.attributes.adminid) === parseInt(props.currentUser.id) ?
-        <Link to={`/groups/${props.group.id}/edit`}>Edit this group</Link> :
+        <><Link to={`/groups/${props.group.id}/edit`}>Edit this group</Link><GroupCodeShow group={props.group} /></> :
         null
       }
 
       {props.group ?
         <><h3>{props.group.attributes.name}</h3>
-        <h4>{props.group.attributes.price}</h4>
-        <GroupCodeShow group={props.group} /></> :
+        <h4>${props.group.attributes.price}</h4></> :
         <p>This the the Group show with no group!</p>
       }
     </div>
