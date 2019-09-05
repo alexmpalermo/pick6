@@ -35,10 +35,7 @@ class App extends React.Component {
           <Route exact path='/groups/join' render={props => <JoinGroup {...props} />}/>
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {
-              console.log("props in app...", props)
-              console.log("groups in app...", groups)
               const group = groups.find(group => group.id === props.match.params.id)
-              console.log("group in app...", group)
               return <GroupShow group={group} {...props}/>
             }
           }/>
@@ -47,13 +44,12 @@ class App extends React.Component {
               return <EditGroupForm group={group} {...props}/>
             }
           }/>
-          <Route exact path='groups/:id/weeks' render={props => {
-              console.log("app group params...", props.match.params)
+          <Route exact path='groups/:group_id/weeks' render={props => {
               const group = groups.find(group => group.id === props.match.params.group_id)
               return <Weeks group={group} {...props}/>
             }
           }/>
-          <Route exact path='groups/:id/weeks/:id' render={props => {
+          <Route exact path='groups/:group_id/weeks/:id' render={props => {
               console.log("props in app...", props)
               console.log("weeks in app...", weeks)
               const week = weeks.find(week => week.id === props.match.params.id)

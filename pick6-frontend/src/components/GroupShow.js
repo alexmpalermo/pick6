@@ -28,7 +28,7 @@ class GroupShow extends React.Component {
         {group ?
           <><h3>{group.attributes.name}</h3>
           <h4>${group.attributes.price}</h4>
-          <Weeks group={group}/>
+          <Weeks group={group} weeks={weeks}/>
           </> :
           <p>This the the Group show with no group!</p>
         }

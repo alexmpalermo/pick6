@@ -16,7 +16,15 @@ class Api::V1::WeeksController < ApplicationController
 
   # GET /weeks/1
   def show
-    render json: @week
+    @week = Week.find_by_id(params[:id])
+    @group = Group.find_by_id(params[:group_id])
+    if logged_in? && @group.users.include?(current_user)
+      render json: WeekSerializer.new(@week), status: :ok
+    else
+      render json: {
+        error: "You must be logged in to see this week"
+      }
+    end
   end
 
   # POST /weeks

@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Weeks = ({ group }) => {
+const Weeks = ({ group, weeks }) => {
+  console.log(weeks)
   return (
-    group.attributes.weeks.length > 0 ?
+    weeks.length > 0 ?
       <div className="week-list">
-        {group.attributes.weeks.map((week) => {
-          return <p key={week.number}><Link to={`/groups/${group.id}`}>{week.number}</Link></p>
+        {weeks.map((week) => {
+          return <p key={week.id}><Link to={`/groups/${group.id}/weeks/${week.id}`}>{week.attributes.number}</Link></p>
           }
         )}
       </div> :
