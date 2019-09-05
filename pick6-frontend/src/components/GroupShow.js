@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import EditGroupForm from './EditGroupForm.js'
 import GroupCodeShow from './GroupCodeShow.js'
+import Weeks from './Weeks.js'
 import { connect } from 'react-redux'
 
 const GroupShow = (props) => {
@@ -15,7 +16,9 @@ const GroupShow = (props) => {
 
       {props.group ?
         <><h3>{props.group.attributes.name}</h3>
-        <h4>${props.group.attributes.price}</h4></> :
+        <h4>${props.group.attributes.price}</h4>
+        <Weeks group={props.group}/>
+        </> :
         <p>This the the Group show with no group!</p>
       }
     </div>
