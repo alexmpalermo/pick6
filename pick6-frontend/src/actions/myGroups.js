@@ -85,7 +85,7 @@ export const createGroup = (groupData, history) => {
       } else {
         dispatch(addGroup(resp.data))
         dispatch(resetNewGroupForm())
-        history.push(`/`)
+        history.push(`/groups/${resp.data.id}`)
       }
     })
     .catch(console.log)
