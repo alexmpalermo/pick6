@@ -32,10 +32,3 @@ const mapStateToProps = ({ currentUser }) => {
 }
 
 export default connect(mapStateToProps)(GroupShow)
-
-
-// {group && parseInt(group.attributes.adminid) === parseInt(userid) ? (
-//   <Link to={`/groups/${group.id}/edit`}>Edit this group</Link>
-// ) : (
-//   null
-// )}
