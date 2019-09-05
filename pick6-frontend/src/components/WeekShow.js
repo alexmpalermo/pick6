@@ -1,13 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { getMyWeeks } from '../actions/myWeeks.js'
 import { connect } from 'react-redux'
 
 class WeekShow extends React.Component {
 
-  componentDidMount() {
-    this.props.getMyWeeks()
-  }
+
 
   render(){
     return (
@@ -23,4 +20,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getMyWeeks })(WeekShow)
+export default connect(mapStateToProps)(WeekShow)

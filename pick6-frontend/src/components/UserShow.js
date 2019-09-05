@@ -4,7 +4,7 @@ import Groups from './Groups.js'
 import JoinGroup from './JoinGroup.js'
 
 const UserShow = (props) => {
-
+  console.log("in usershow groups...", props.groups)
   return (
     <div className="UserShow">
       {props.currentUser ? <h2>Welcome, {props.currentUser.attributes.name}!</h2> : null }

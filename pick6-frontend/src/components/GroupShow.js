@@ -9,7 +9,11 @@ import { connect } from 'react-redux'
 class GroupShow extends React.Component {
 
   componentDidMount() {
-    this.props.getMyWeeks(this.props.group)
+    this.props.group && this.props.getMyWeeks(this.props.group)
+  }
+
+  componentDidUpdate(prevProps) {
+    this.props.group && !prevProps.group && this.props.getMyWeeks(this.props.group)
   }
 
   render(){
