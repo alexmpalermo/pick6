@@ -9,9 +9,9 @@ export const setMyWeeks = weeks => {
 
 // async
 
-export const getMyWeeks = () => {
+export const getMyWeeks = (group) => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/weeks", {
+    return fetch(`http://localhost:3001/api/v1/groups/${group.id}/weeks`, {
       credentials: "include",
       method: "GET",
       headers: { "Content-Type": "application/json" }

@@ -3,32 +3,42 @@ import {Link} from 'react-router-dom'
 import EditGroupForm from './EditGroupForm.js'
 import GroupCodeShow from './GroupCodeShow.js'
 import Weeks from './Weeks.js'
+import { getMyWeeks } from '../actions/myWeeks.js'
 import { connect } from 'react-redux'
 
-const GroupShow = (props) => {
+class GroupShow extends React.Component {
 
-  return (
-    <div className="group-show">
-      {props.group && parseInt(props.group.attributes.adminid) === parseInt(props.currentUser.id) ?
-        <><Link to={`/groups/${props.group.id}/edit`}>Edit this group</Link><GroupCodeShow group={props.group} /></> :
-        null
-      }
+  componentDidMount() {
+    this.props.getMyWeeks(this.props.group)
+  }
 
-      {props.group ?
-        <><h3>{props.group.attributes.name}</h3>
-        <h4>${props.group.attributes.price}</h4>
-        <Weeks group={props.group}/>
-        </> :
-        <p>This the the Group show with no group!</p>
-      }
-    </div>
-  )
+  render(){
+    const { weeks, currentUser, group } = this.props
+    return (
+      <div className="group-show">
+        {group && parseInt(group.attributes.adminid) === parseInt(currentUser.id) ?
+          <><Link to={`/groups/${group.id}/edit`}>Edit this group</Link><GroupCodeShow group={group} /></> :
+          null
+        }
+
+        {group ?
+          <><h3>{group.attributes.name}</h3>
+          <h4>${group.attributes.price}</h4>
+          <Weeks group={group}/>
+          </> :
+          <p>This the the Group show with no group!</p>
+        }
+      </div>
+    )
+  }
+
 }
 
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = state => {
   return {
-    currentUser
+    currentUser: state.currentUser,
+    weeks: state.myWeeks
   }
 }
 
-export default connect(mapStateToProps)(GroupShow)
+export default connect(mapStateToProps, { getMyWeeks })(GroupShow)
