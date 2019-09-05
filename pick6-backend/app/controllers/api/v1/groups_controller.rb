@@ -32,7 +32,7 @@ class Api::V1::GroupsController < ApplicationController
     if @group.save
       numbs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
       numbs.each do |n|
-        @group.week.create(number: n)
+        @group.weeks.create(number: n)
       end
       render json: GroupSerializer.new(@group), status: :created
     else

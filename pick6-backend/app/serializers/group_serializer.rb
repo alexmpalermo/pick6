@@ -9,4 +9,10 @@ class GroupSerializer
     }
     end
   end
+  attribute :weeks do |group|
+    group.weeks.map do |week| {
+      number: week.number
+    }
+    end
+  end
 end

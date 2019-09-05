@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.js'
 import UserShow from './components/UserShow.js'
 import Home from './components/Home.js'
 import Groups from './components/Groups.js'
+import Weeks from './components/Weeks.js'
 import GroupShow from './components/GroupShow.js'
 import GroupCodeShow from './components/GroupCodeShow.js'
 import Signup from './components/Signup.js'
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/groups' component={Groups} />
+          <Route exact path='/weeks' component={Weeks} />
           <Route exact path='/groups/join' render={props => <JoinGroup {...props} />}/>
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {

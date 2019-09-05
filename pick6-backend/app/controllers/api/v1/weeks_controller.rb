@@ -3,9 +3,15 @@ class Api::V1::WeeksController < ApplicationController
 
   # GET /weeks
   def index
-    @weeks = Week.all
-
-    render json: @weeks
+    if logged_in?
+      @group = Group.find_by_id(params[:group][:id])
+      @weeks = @group.weeks
+      render json: WeekSerializer.new(@weeks), status: :ok
+    else
+      render json: {
+        error: "You must be logged in to see weeks"
+      }
+    end
   end
 
   # GET /weeks/1
