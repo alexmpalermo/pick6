@@ -16,10 +16,4 @@ const GroupCodeShow = ({group}) => {
   )
 }
 
-const mapStateToProps = ({ group }) => {
-  return {
-    group
-  }
-}
-
-export default connect(mapStateToProps)(GroupCodeShow)
+export default GroupCodeShow

@@ -9,6 +9,7 @@ import UserShow from './components/UserShow.js'
 import Home from './components/Home.js'
 import Groups from './components/Groups.js'
 import GroupShow from './components/GroupShow.js'
+import GroupCodeShow from './components/GroupCodeShow.js'
 import Signup from './components/Signup.js'
 import NewGroupForm from './components/NewGroupForm.js'
 import EditGroupForm from './components/EditGroupForm.js'
@@ -40,6 +41,7 @@ class App extends React.Component {
               return <GroupShow group={group} {...props}/>
             }
           }/>
+          <Route exact path='/groups/code' component={GroupCodeShow} />
           <Route exact path='/groups/:id/edit' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
               return <EditGroupForm group={group} {...props}/>
