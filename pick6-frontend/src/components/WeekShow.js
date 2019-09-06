@@ -6,11 +6,7 @@ import { getCurrentWeek } from '../actions/currentWeek.js'
 class WeekShow extends React.Component {
 
   componentDidMount() {
-    this.props.week && this.props.getCurrentWeek(this.props.week)
-  }
-
-  componentDidUpdate(prevProps) {
-    this.props.week && !prevProps.week && this.props.getCurrentWeek(this.props.week)
+    this.props.getCurrentWeek(parseInt(this.props.match.params.id))
   }
 
   render(){
@@ -28,8 +24,6 @@ class WeekShow extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    weeks: state.myWeeks,
-    group: state.group,
     week: state.currentWeek
   }
 }

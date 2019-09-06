@@ -1,7 +1,7 @@
 class Api::V1::WeeksController < ApplicationController
   before_action :set_week, only: [:update, :destroy]
 
-  # GET /weeks
+  # GET /groups/:id/weeks
   def index
     if logged_in?
       group = Group.find_by_id(params[:id])

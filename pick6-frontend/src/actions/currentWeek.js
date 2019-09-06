@@ -9,9 +9,9 @@ export const setCurrentWeek = week => {
 
 // async
 
-export const getCurrentWeek = (week) => {
+export const getCurrentWeek = (week_id) => {
   return dispatch => {
-    return fetch(`http://localhost:3001/api/v1/groups/${week.group_id}/weeks/${week.id}`, {
+    return fetch(`http://localhost:3001/api/v1/weeks/${week_id}`, {
       credentials: "include",
       method: "GET",
       headers: { "Content-Type": "application/json" }
@@ -21,6 +21,7 @@ export const getCurrentWeek = (week) => {
       if (resp.error) {
         alert(resp.error)
       } else {
+        console.log(resp)
         dispatch(setCurrentWeek(resp.data))
       }
     })
