@@ -1,10 +1,10 @@
 class Api::V1::WeeksController < ApplicationController
-  before_action :set_week, only: [:show, :update, :destroy]
+  before_action :set_week, only: [:update, :destroy]
 
   # GET /weeks
   def index
     if logged_in?
-      group = Group.find_by_id(params[:group_id])
+      group = Group.find_by_id(params[:id])
       @weeks = group.weeks
       render json: WeekSerializer.new(@weeks), status: :ok
     else
@@ -17,8 +17,8 @@ class Api::V1::WeeksController < ApplicationController
   # GET /weeks/1
   def show
     @week = Week.find_by_id(params[:id])
-    @group = Group.find_by_id(params[:group_id])
-    if logged_in? && @group.users.include?(current_user)
+    group = Group.find_by_id(@week.group_id)
+    if logged_in? && group.users.include?(current_user)
       render json: WeekSerializer.new(@week), status: :ok
     else
       render json: {

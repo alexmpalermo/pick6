@@ -9,6 +9,7 @@ import newGroupForm from './reducers/newGroupForm.js'
 import editGroupForm from './reducers/editGroupForm.js'
 import joinGroupForm from './reducers/joinGroupForm.js'
 import myWeeks from './reducers/myWeeks.js'
+import currentWeek from './reducers/currentWeek.js'
 
 const reducer = combineReducers({
   users,
@@ -19,7 +20,8 @@ const reducer = combineReducers({
   newGroupForm,
   editGroupForm,
   joinGroupForm,
-  myWeeks
+  myWeeks,
+  currentWeek
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

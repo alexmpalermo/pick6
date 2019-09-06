@@ -14,6 +14,7 @@ import NewGroupForm from './components/NewGroupForm.js'
 import EditGroupForm from './components/EditGroupForm.js'
 import JoinGroup from './components/JoinGroup.js'
 import WeekShow from './components/WeekShow.js'
+import Weeks from './components/Weeks.js'
 
 class App extends React.Component {
 
@@ -37,7 +38,8 @@ class App extends React.Component {
               return <GroupShow group={group} {...props}/>
             }
           }/>
-          <Route exact path='/weeks/:id' render={props => {
+          <Route path='/weeks/:id' render={props => {
+              console.log("props are..", props)
               const week = weeks.find(week => week.id === props.match.params.id)
               return <WeekShow week={week} {...props}/>
             }
