@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const PickSheetShow = ({week}) => {
+const PickSheetForm = ({week}) => {
 
   return (
     <>
@@ -12,6 +12,7 @@ const PickSheetShow = ({week}) => {
             <th>Home</th>
             <th>Handicap</th>
             <th>Away</th>
+            <th>My Picks</th>
           </tr>
           </thead>
           <tbody>
@@ -19,11 +20,13 @@ const PickSheetShow = ({week}) => {
             <td>NE</td>
             <td>3.5</td>
             <td>NYJ</td>
+            <td></td>
           </tr>
           <tr>
             <td>OAK</td>
             <td>-2</td>
             <td>NYG</td>
+            <td></td>
           </tr>
           </tbody>
         </table>
@@ -38,4 +41,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(PickSheetShow)
+export default connect(mapStateToProps)(PickSheetForm)
