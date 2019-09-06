@@ -7,8 +7,6 @@ import Login from './components/Login.js'
 import Navbar from './components/Navbar.js'
 import UserShow from './components/UserShow.js'
 import Home from './components/Home.js'
-import Groups from './components/Groups.js'
-import Weeks from './components/Weeks.js'
 import GroupShow from './components/GroupShow.js'
 import GroupCodeShow from './components/GroupCodeShow.js'
 import Signup from './components/Signup.js'
@@ -39,6 +37,11 @@ class App extends React.Component {
               return <GroupShow group={group} {...props}/>
             }
           }/>
+          <Route exact path='/weeks/:id' render={props => {
+              const week = weeks.find(week => week.id === props.match.params.id)
+              return <WeekShow week={week} {...props}/>
+            }
+          }/>
           <Route exact path='/groups/:id/edit' render={props => {
               const group = groups.find(group => group.id === props.match.params.id)
               return <EditGroupForm group={group} {...props}/>
@@ -61,24 +64,3 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
-
-// <Route exact path='/groups' component={Groups}/>
-
-// <Route exact path='/groups/:id' render={props => {
-//     const group = groups.find(group => group.id === props.match.params.id)
-//     return <GroupShow group={group} {...props}/>
-//   }
-// }/>
-// <Route exact path='groups/:group_id/weeks' render={props => {
-//     const group = groups.find(group => group.id === props.match.params.group_id)
-//     return <Weeks group={group} {...props}/>
-//   }
-// }/>
-// <Route exact path='groups/:group_id/weeks/:id' render={props => {
-//     console.log("props in app...", props)
-//     console.log("weeks in app...", weeks)
-//     const week = weeks.find(week => week.id === props.match.params.id)
-//     console.log("week in app...", week)
-//     return <WeekShow week={week} {...props}/>
-//   }
-// }/>

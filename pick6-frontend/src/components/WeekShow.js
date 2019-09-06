@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 
 const WeekShow = props => {
 
-
-
-
     return (
       <div>
         <h3>THE WEEK SHOW</h3>
