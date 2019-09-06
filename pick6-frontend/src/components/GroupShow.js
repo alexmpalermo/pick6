@@ -1,8 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 import EditGroupForm from './EditGroupForm.js'
 import GroupCodeShow from './GroupCodeShow.js'
 import Weeks from './Weeks.js'
+import WeekShow from './WeekShow.js'
 import { getMyWeeks } from '../actions/myWeeks.js'
 import { connect } from 'react-redux'
 
@@ -17,7 +18,8 @@ class GroupShow extends React.Component {
   }
 
   render(){
-    const { weeks, currentUser, group } = this.props
+    const { weeks, currentUser, group, match } = this.props
+
     return (
       <div className="group-show">
         {group && parseInt(group.attributes.adminid) === parseInt(currentUser.id) ?
@@ -28,7 +30,7 @@ class GroupShow extends React.Component {
         {group ?
           <><h3>{group.attributes.name}</h3>
           <h4>${group.attributes.price}</h4>
-          <Weeks group={group} weeks={weeks}/>
+          <Weeks group={group} weeks={weeks} match={match} />
           </> :
           <p>This the the Group show with no group!</p>
         }

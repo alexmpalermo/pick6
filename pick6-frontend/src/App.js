@@ -44,19 +44,7 @@ class App extends React.Component {
               return <EditGroupForm group={group} {...props}/>
             }
           }/>
-          <Route exact path='groups/:group_id/weeks' render={props => {
-              const group = groups.find(group => group.id === props.match.params.group_id)
-              return <Weeks group={group} {...props}/>
-            }
-          }/>
-          <Route exact path='groups/:group_id/weeks/:id' render={props => {
-              console.log("props in app...", props)
-              console.log("weeks in app...", weeks)
-              const week = weeks.find(week => week.id === props.match.params.id)
-              console.log("week in app...", week)
-              return <WeekShow week={week} {...props}/>
-            }
-          }/>
+
         </Switch>
       </div>
     );
@@ -73,3 +61,24 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
+
+// <Route exact path='/groups' component={Groups}/>
+
+// <Route exact path='/groups/:id' render={props => {
+//     const group = groups.find(group => group.id === props.match.params.id)
+//     return <GroupShow group={group} {...props}/>
+//   }
+// }/>
+// <Route exact path='groups/:group_id/weeks' render={props => {
+//     const group = groups.find(group => group.id === props.match.params.group_id)
+//     return <Weeks group={group} {...props}/>
+//   }
+// }/>
+// <Route exact path='groups/:group_id/weeks/:id' render={props => {
+//     console.log("props in app...", props)
+//     console.log("weeks in app...", weeks)
+//     const week = weeks.find(week => week.id === props.match.params.id)
+//     console.log("week in app...", week)
+//     return <WeekShow week={week} {...props}/>
+//   }
+// }/>

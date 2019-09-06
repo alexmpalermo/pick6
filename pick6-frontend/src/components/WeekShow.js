@@ -2,16 +2,16 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
-class WeekShow extends React.Component {
+const WeekShow = props => {
 
 
 
-  render(){
+
     return (
-      <h3>THE WEEK SHOW</h3>
+      <div>
+        <h3>THE WEEK SHOW</h3>
+      </div>
     )
-  }
-
 }
 
 const mapStateToProps = state => {
