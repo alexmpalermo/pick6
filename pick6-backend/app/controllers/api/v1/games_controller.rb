@@ -5,7 +5,7 @@ class Api::V1::GamesController < ApplicationController
   def index
     @games = Game.all
 
-    render json: @games
+    render json: GameSerializer.new(@games), status: :ok
   end
 
   # GET /games/1
