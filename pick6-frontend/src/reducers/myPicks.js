@@ -4,7 +4,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "SET_MY_PICKS":
       return action.picks
-    case "ADD_PICKS":
+    case "ADD_PICK":
       return state.concat(action.pick)
     case "CLEAR_PICKS":
       return initialState

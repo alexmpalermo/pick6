@@ -4,6 +4,7 @@ import { updatePickSheetForm } from '../actions/pickSheetForm.js'
 import { createPickSheet } from '../actions/myPicks.js'
 
 const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, createPickSheet}) => {
+  console.log(week)
 
   const handleTieChange = event => {
     const {name, value} = event.target
@@ -15,14 +16,8 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
   }
 
   const handleTeamChange = event => {
-    const {name, value} = event.target
-    const updatedFormInfo = {
-      ...formData,
-      teams: {
-        ...formData.teams,
-        [name]: value
-      }
-    }
+    const {value} = event.target
+    const updatedFormInfo = formData.teams.concat(value)
     updatePickSheetForm(updatedFormInfo)
   }
 
@@ -45,7 +40,7 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
           </tr>
           </thead>
           <tbody>
-          {week.games.map(game => {
+          {week.attributes.games.map(game => {
             return (
               <tr>
                 <td>{game.home.name}</td>
@@ -59,9 +54,9 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
       </div>
       <div className="pick-form">
         <form onSubmit={handleSubmit}>
-        {week.games.map((game, i) => {
+        {week.attributes.games.map((game, i) => {
           return (
-            <select name={i} value={formData.teams} onChange={handleTeamChange} >
+            <select name={'team-'+ i} value={formData.teams} onChange={handleTeamChange} >
               <option value={game.home}>{game.home.name}</option>
               <option value={game.away}>{game.away.name}</option>
             </select>
@@ -79,7 +74,8 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
 
 const mapStateToProps = state => {
   return {
-    user: state.currentUser
+    user: state.currentUser,
+    formData: state.pickSheetForm
   }
 }
 

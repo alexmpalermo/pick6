@@ -2,7 +2,6 @@ const initialState = {
   tiebreaker: "",
   user_id: "",
   week_id: "",
-  points: "",
   teams: []
 }
 

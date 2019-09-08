@@ -16,11 +16,13 @@ class Api::V1::PicksController < ApplicationController
   # POST /picks
   def create
     @pick = Pick.new(pick_params)
-
     if @pick.save
-      render json: @pick, status: :created, location: @pick
+      render json: PickSerializer.new(@pick), status: :created
     else
-      render json: @pick.errors, status: :unprocessable_entity
+      resp = {
+        error: @pick.errors.full_messages.to_sentence
+      }
+      render json: resp, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +48,6 @@ class Api::V1::PicksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def pick_params
-      params.require(:pick).permit(:tiebreaker, :user_id, :week_id, :points)
+      params.require(:pick).permit(:tiebreaker, :user_id, :week_id, :points, :teams)
     end
 end
