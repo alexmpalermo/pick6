@@ -12,6 +12,8 @@ import myWeeks from './reducers/myWeeks.js'
 import currentWeek from './reducers/currentWeek.js'
 import teams from './reducers/teams.js'
 import games from './reducers/games.js'
+import myPicks from './reducers/myPicks.js'
+import pickSheetForm from './reducers/pickSheetForm.js'
 
 const reducer = combineReducers({
   users,
@@ -25,7 +27,9 @@ const reducer = combineReducers({
   myWeeks,
   currentWeek,
   teams,
-  games
+  games,
+  myPicks,
+  pickSheetForm
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

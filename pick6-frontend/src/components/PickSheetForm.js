@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { updatePickSheetForm } from '../actions/pickSheetForm.js'
+import { createPickSheet } from '../actions/myPicks.js'
 
-const PickSheetForm = ({week}) => {
+const PickSheetForm = ({week, user}) => {
 
   return (
     <>
