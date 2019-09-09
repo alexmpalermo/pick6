@@ -1,3 +1,4 @@
+import { getMyTeams } from './teams.js'
 // sync
 
 export const setCurrentWeek = week => {
@@ -21,7 +22,6 @@ export const getCurrentWeek = (week_id) => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        console.log(resp)
         dispatch(setCurrentWeek(resp.data))
       }
     })

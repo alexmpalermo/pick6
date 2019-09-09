@@ -15,6 +15,7 @@ import EditGroupForm from './components/EditGroupForm.js'
 import JoinGroup from './components/JoinGroup.js'
 import WeekShow from './components/WeekShow.js'
 import Weeks from './components/Weeks.js'
+import PickSheetForm from './components/PickSheetForm.js'
 
 class App extends React.Component {
 
@@ -23,7 +24,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn, groups, currentUser, weeks } = this.props
+    const { loggedIn, groups, currentUser, weeks, teams } = this.props
     return (
       <div className="App">
         <Navbar location={this.props.location}/>
@@ -39,9 +40,9 @@ class App extends React.Component {
             }
           }/>
           <Route path='/weeks/:id' render={props => {
-              console.log("props are..", props)
+              console.log("IN APP...", teams)
               const week = weeks.find(week => week.id === props.match.params.id)
-              return <WeekShow week={week} {...props}/>
+              return <WeekShow week={week} teams={teams} {...props}/>
             }
           }/>
           <Route exact path='/groups/:id/edit' render={props => {
@@ -49,6 +50,7 @@ class App extends React.Component {
               return <EditGroupForm group={group} {...props}/>
             }
           }/>
+
 
         </Switch>
       </div>
@@ -62,7 +64,7 @@ const mapStateToProps = state => {
     loggedIn: !!state.currentUser,
     groups: state.myGroups,
     weeks: state.myWeeks,
-    teams: state.teams 
+    teams: state.teams
   }
 }
 

@@ -13,6 +13,12 @@ class Api::V1::PicksController < ApplicationController
     render json: @pick
   end
 
+  # GET /picks/new
+  def new
+    @pick = Pick.new
+    render json: PickSerializer.new(@pick), status: :ok
+  end
+
   # POST /picks
   def create
     @pick = Pick.new(pick_params)

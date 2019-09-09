@@ -30,6 +30,7 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
   }
 
   return (
+    teams.length > 0 ?
     <>
     <h2>Week {week.attributes.number} Pick Sheet</h2>
     <div>
@@ -44,7 +45,6 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
           </thead>
           <tbody>
           {week.attributes.games.map(game => {
-            console.log("teams is...", teams)
             let home = teams.find(team => team.attributes.number === game.home)
             let away = teams.find(team => team.attributes.number === game.away)
             return (
@@ -76,7 +76,8 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
       </div>
 
     </div>
-    </>
+    </> :
+    null
   )
 }
 
