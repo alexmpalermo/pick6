@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :games
       resources :groups
       resources :weeks
+      resources :teams 
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

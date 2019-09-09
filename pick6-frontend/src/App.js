@@ -61,7 +61,8 @@ const mapStateToProps = state => {
     currentUser: state.current_user,
     loggedIn: !!state.currentUser,
     groups: state.myGroups,
-    weeks: state.myWeeks
+    weeks: state.myWeeks,
+    teams: state.teams 
   }
 }
 

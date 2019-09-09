@@ -8,56 +8,56 @@
 
 ######## Teams
 
-Team.create(number: 1, name: "Arizona Cardinals", abrv: "ARI")   #1
-Team.create(number: 2, name: "Atlanta Falcons", abrv: "ATL")     #2
-Team.create(number: 3, name: "Baltimore Ravens", abrv: "BAL")    #3
-Team.create(number: 4, name: "Buffalo Bills", abrv: "BUF")       #4
-Team.create(number: 5, name: "Carolina Panthers", abrv: "CAR")   #5
-Team.create(number: 6, name: "Chicago Bears", abrv: "CHI")       #6
-Team.create(number: 7, name: "Cincinnati Bengals", abrv: "CIN")  #7
-Team.create(number: 8, name: "Cleveland Browns", abrv: "CLE")    #8
-Team.create(number: 9, name: "Dallas Cowboys", abrv: "DAL")      #9
-Team.create(number: 10, name: "Denver Broncos", abrv: "DEN")      #10
-Team.create(number: 11, name: "Detroit Lions", abrv: "DET")       #11
-Team.create(number: 12, name: "Green Bay Packers", abrv: "GB")    #12
-Team.create(number: 13, name: "Houston Texans", abrv: "HOU")      #13
-Team.create(number: 14, name: "Indianapolis Colts", abrv: "IND")  #14
-Team.create(number: 15, name: "Jacksonville Jaguars", abrv: "JAX")#15
-Team.create(number: 16, name: "Kansas City Chiefs", abrv: "KC")   #16
-Team.create(number: 17, name: "Los Angeles Chargers", abrv: "LAC")#17
-Team.create(number: 18, name: "Los Angeles Rams", abrv: "LAR")    #18
-Team.create(number: 19, name: "Miami Dolphins", abrv: "MIA")      #19
-Team.create(number: 20, name: "Minnesota Vikings", abrv: "MIN")   #20
-Team.create(number: 21, name: "New England Patriots", abrv: "NE") #21
-Team.create(number: 22, name: "New Orleans Saints", abrv: "NO")   #22
-Team.create(number: 23, name: "New York Giants", abrv: "NYG")     #23
-Team.create(number: 24, name: "New York Jets", abrv: "NYJ")       #24
-Team.create(number: 25, name: "Oakland Raiders", abrv: "OAK")     #25
-Team.create(number: 26, name: "Philadelphia Eagles", abrv: "PHI") #26
-Team.create(number: 27, name: "Pittsburgh Steelers", abrv: "PIT") #27
-Team.create(number: 28, name: "San Francisco 49ers", abrv: "SF")  #28
-Team.create(number: 29, name: "Seattle Seahawks", abrv: "SEA")    #29
-Team.create(number: 30, name: "Tampa Bay Buccaneers", abrv: "TB") #30
-Team.create(number: 31, name: "Tennessee Titans", abrv: "TEN")    #31
-Team.create(number: 32, name: "Washington Redskins", abrv: "WAS") #32
+Team.create(name: "Arizona Cardinals", abrv: "ARI")   #1
+Team.create(name: "Atlanta Falcons", abrv: "ATL")     #2
+Team.create(name: "Baltimore Ravens", abrv: "BAL")    #3
+Team.create(name: "Buffalo Bills", abrv: "BUF")       #4
+Team.create(name: "Carolina Panthers", abrv: "CAR")   #5
+Team.create(name: "Chicago Bears", abrv: "CHI")       #6
+Team.create(name: "Cincinnati Bengals", abrv: "CIN")  #7
+Team.create(name: "Cleveland Browns", abrv: "CLE")    #8
+Team.create(name: "Dallas Cowboys", abrv: "DAL")      #9
+Team.create(name: "Denver Broncos", abrv: "DEN")      #10
+Team.create(name: "Detroit Lions", abrv: "DET")       #11
+Team.create(name: "Green Bay Packers", abrv: "GB")    #12
+Team.create(name: "Houston Texans", abrv: "HOU")      #13
+Team.create(name: "Indianapolis Colts", abrv: "IND")  #14
+Team.create(name: "Jacksonville Jaguars", abrv: "JAX")#15
+Team.create(name: "Kansas City Chiefs", abrv: "KC")   #16
+Team.create(name: "Los Angeles Chargers", abrv: "LAC")#17
+Team.create(name: "Los Angeles Rams", abrv: "LAR")    #18
+Team.create(name: "Miami Dolphins", abrv: "MIA")      #19
+Team.create(name: "Minnesota Vikings", abrv: "MIN")   #20
+Team.create(name: "New England Patriots", abrv: "NE") #21
+Team.create(name: "New Orleans Saints", abrv: "NO")   #22
+Team.create(name: "New York Giants", abrv: "NYG")     #23
+Team.create(name: "New York Jets", abrv: "NYJ")       #24
+Team.create(name: "Oakland Raiders", abrv: "OAK")     #25
+Team.create(name: "Philadelphia Eagles", abrv: "PHI") #26
+Team.create(name: "Pittsburgh Steelers", abrv: "PIT") #27
+Team.create(name: "San Francisco 49ers", abrv: "SF")  #28
+Team.create(name: "Seattle Seahawks", abrv: "SEA")    #29
+Team.create(name: "Tampa Bay Buccaneers", abrv: "TB") #30
+Team.create(name: "Tennessee Titans", abrv: "TEN")    #31
+Team.create(name: "Washington Redskins", abrv: "WAS") #32
 
 ######  Games
 #week1
-Game.create(handicap: 3, day: "2019-09-05", time: "20:20", away: "12", home: "6")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "32", home: "26")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "4", home: "24")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "2", home: "20")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "3", home: "19")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "16", home: "15")
-Game.create(handicap: 3, day: "2019-09-08", time: "13:00", away: "31", home: "8")
-Game.create(handicap: 3, day: "2019-09-08", time: "16:05", away: "14", home: "17")
-Game.create(handicap: 3, day: "2019-09-08", time: "16:05", away: "7", home: "29")
-Game.create(handicap: 3, day: "2019-09-08", time: "16:25", away: "28", home: "30")
-Game.create(handicap: 3, day: "2019-09-08", time: "16:25", away: "23", home: "9")
-Game.create(handicap: 3, day: "2019-09-08", time: "16:25", away: "11", home: "1")
-Game.create(handicap: 3, day: "2019-09-08", time: "20:20", away: "27", home: "21")
-Game.create(handicap: 3, day: "2019-09-09", time: "19:10", away: "13", home: "22")
-Game.create(handicap: 3, day: "2019-09-09", time: "21:20", away: "10", home: "25")
+Game.create(day: "2019-09-05", time: "20:20", away: "12", home: "6")
+Game.create(day: "2019-09-08", time: "13:00", away: "32", home: "26")
+Game.create(day: "2019-09-08", time: "13:00", away: "4", home: "24")
+Game.create(day: "2019-09-08", time: "13:00", away: "2", home: "20")
+Game.create(day: "2019-09-08", time: "13:00", away: "3", home: "19")
+Game.create(day: "2019-09-08", time: "13:00", away: "16", home: "15")
+Game.create(day: "2019-09-08", time: "13:00", away: "31", home: "8")
+Game.create(day: "2019-09-08", time: "16:05", away: "14", home: "17")
+Game.create(day: "2019-09-08", time: "16:05", away: "7", home: "29")
+Game.create(day: "2019-09-08", time: "16:25", away: "28", home: "30")
+Game.create(day: "2019-09-08", time: "16:25", away: "23", home: "9")
+Game.create(day: "2019-09-08", time: "16:25", away: "11", home: "1")
+Game.create(day: "2019-09-08", time: "20:20", away: "27", home: "21")
+Game.create(day: "2019-09-09", time: "19:10", away: "13", home: "22")
+Game.create(day: "2019-09-09", time: "21:20", away: "10", home: "25")
 
 #week2
 Game.create(day: "2019-09-12", time: "20:20", away: Team.find_by_id(30), home: Team.find_by_id(5))

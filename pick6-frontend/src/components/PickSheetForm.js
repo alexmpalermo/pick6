@@ -3,8 +3,11 @@ import { connect } from 'react-redux'
 import { updatePickSheetForm } from '../actions/pickSheetForm.js'
 import { createPickSheet } from '../actions/myPicks.js'
 
-const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, createPickSheet}) => {
+const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetForm, createPickSheet}) => {
   console.log(week)
+  console.log("user is...", user)
+  console.log("teams is top..", teams)
+
 
   const handleTieChange = event => {
     const {name, value} = event.target
@@ -41,11 +44,14 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
           </thead>
           <tbody>
           {week.attributes.games.map(game => {
+            console.log("teams is...", teams)
+            let home = teams.find(team => team.attributes.number === game.home)
+            let away = teams.find(team => team.attributes.number === game.away)
             return (
               <tr>
-                <td>{game.home.name}</td>
+                <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
-                <td>{game.away.name}</td>
+                <td>{away.attributes.name}</td>
               </tr>
             )
           })}
@@ -55,10 +61,12 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
       <div className="pick-form">
         <form onSubmit={handleSubmit}>
         {week.attributes.games.map((game, i) => {
+          let home = teams.find(team => team.attributes.number === game.home)
+          let away = teams.find(team => team.attributes.number === game.away)
           return (
             <select name={'team-'+ i} value={formData.teams} onChange={handleTeamChange} >
-              <option value={game.home}>{game.home.name}</option>
-              <option value={game.away}>{game.away.name}</option>
+              <option value={home}>{home.attributes.abrv}</option>
+              <option value={away}>{away.attributes.abrv}</option>
             </select>
           )
         })}
@@ -73,9 +81,11 @@ const PickSheetForm = ({week, user, formData, history, updatePickSheetForm, crea
 }
 
 const mapStateToProps = state => {
+  console.log("state...", state)
   return {
     user: state.currentUser,
-    formData: state.pickSheetForm
+    formData: state.pickSheetForm,
+    teams: state.teams
   }
 }
 

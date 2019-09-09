@@ -4,7 +4,6 @@ class Api::V1::TeamsController < ApplicationController
   # GET /teams
   def index
     @teams = Team.all
-
     render json: TeamSerializer.new(@teams), status: :ok
   end
 

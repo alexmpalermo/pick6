@@ -6,13 +6,13 @@ class WeekSerializer
     week.games.map do |game| {
       day: game.day,
       time: game.time,
-      winner: game.winner,
+      winner: game.winner.to_i,
       total: game.total,
-      home: game.home,
-      away: game.away,
+      home: game.home.to_i,
+      away: game.away.to_i,
       handicap: game.handicap,
       hscore: game.hscore,
-      ascore: game.ascore 
+      ascore: game.ascore
     }
     end
   end
