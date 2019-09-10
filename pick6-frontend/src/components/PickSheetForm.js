@@ -44,7 +44,7 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
             let home = teams.find(team => team.attributes.number === game.home)
             let away = teams.find(team => team.attributes.number === game.away)
             return (
-              <tr>
+              <tr key={home.id}>
                 <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
                 <td>{away.attributes.name}</td>
@@ -60,7 +60,7 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
           let home = teams.find(team => team.attributes.number === game.home)
           let away = teams.find(team => team.attributes.number === game.away)
           return (
-            <select name={'team-'+ i} value={formData.teams} onChange={handleTeamChange} >
+            <select key={home.id} name={'team-'+ i} value={formData.teams} onChange={handleTeamChange} multiple={false} >
               <option value={home}>{home.attributes.abrv}</option>
               <option value={away}>{away.attributes.abrv}</option>
             </select>
@@ -85,4 +85,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(PickSheetForm)
+export default connect(mapStateToProps, {updatePickSheetForm, createPickSheet})(PickSheetForm)

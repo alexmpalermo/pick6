@@ -9,7 +9,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_PICK_SHEET_FORM":
-      return {
+      return console.log("reducer update...", state),{
         ...state,
         [action.formData.name]: action.formData.value
       }

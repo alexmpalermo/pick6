@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const MyPicks = ({week, teams, user}) => {
-  
+
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   let finalHome = teams.find(team => team.attributes.number === finalGame.home)
   let finalAway = teams.find(team => team.attributes.number === finalGame.away)
@@ -27,7 +27,7 @@ const MyPicks = ({week, teams, user}) => {
             let home = teams.find(team => team.attributes.number === game.home)
             let away = teams.find(team => team.attributes.number === game.away)
             return (
-              <tr>
+              <tr key={home.id}>
                 <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
                 <td>{away.attributes.name}</td>

@@ -15,7 +15,7 @@ class WeekShow extends React.Component {
 
 
   render(){
-    console.log("in week show props are...", this.props)
+
     const { week, teams } = this.props
 
     return (
@@ -36,7 +36,6 @@ class WeekShow extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state weekshow...", state)
   return {
     currentUser: state.currentUser,
     week: state.currentWeek,
