@@ -22,6 +22,9 @@ class Api::V1::PicksController < ApplicationController
   # POST /picks
   def create
     @pick = Pick.new(pick_params)
+    params[:pick][:teamsarray].each do |team|
+      @pick.teams << Team.find_by(number: team.to_i)
+    end
     if @pick.save
       render json: PickSerializer.new(@pick), status: :created
     else
@@ -54,6 +57,6 @@ class Api::V1::PicksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def pick_params
-      params.require(:pick).permit(:tiebreaker, :user_id, :week_id, :points, :teams)
+      params.require(:pick).permit(:tiebreaker, :user_id, :week_id)
     end
 end

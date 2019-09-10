@@ -4,21 +4,12 @@ import { updatePickSheetForm } from '../actions/pickSheetForm.js'
 import { updatePickSheetFormTeams, removeTeamFromPickSheetForm } from '../actions/pickSheetFormTeams.js'
 import { createPickSheet } from '../actions/myPicks.js'
 
-const PickSheetForm = ({teams, teamsArr, week, weekId, userId, formData, history, updatePickSheetForm, updatePickSheetFormTeams, removeTeamFromPickSheetForm, createPickSheet}) => {
+const PickSheetForm = ({teams, teamsArr, week, userId, formData, history, updatePickSheetForm, updatePickSheetFormTeams, removeTeamFromPickSheetForm, createPickSheet}) => {
 
   const handleTieChange = event => {
     const {name, value} = event.target
     updatePickSheetForm(name, value)
   }
-
-  const checkTeamsArr = value => {
-    if (teamsArr.includes(value)) {
-      return ""
-    } else {
-      return value
-    }
-  }
-
 
   const handleTeamChange = event => {
     const {value} = event.target
@@ -48,9 +39,8 @@ const PickSheetForm = ({teams, teamsArr, week, weekId, userId, formData, history
     createPickSheet({
       ...formData,
       userId,
-      weekId
-    }, history
-    )
+      weekId: week.id
+    }, teamsArr, history)
   }
 
   return (
@@ -107,11 +97,9 @@ const PickSheetForm = ({teams, teamsArr, week, weekId, userId, formData, history
 
 const mapStateToProps = state => {
   const userId = state.currentUser ? state.currentUser.id : ""
-  const weekId = state.week ? state.week.id : ""
 
   return {
     userId,
-    weekId,
     formData: state.pickSheetForm,
     teamsArr: state.pickSheetFormTeams,
     teams: state.teams

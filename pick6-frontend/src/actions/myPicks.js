@@ -11,14 +11,14 @@ export const addPick = pick => {
 
 // async
 
-export const createPickSheet = (pickData, history) => {
+export const createPickSheet = (pickData, teamsArr, history) => {
   return dispatch => {
     const sendablePickData = {
       pick: {
         tiebreaker: pickData.tiebreaker,
-        user_id: pickData.user.id,
-        week_id: pickData.week.id,
-        teams: pickData.teams
+        user_id: pickData.userId,
+        week_id: pickData.weekId,
+        teamsarray: teamsArr
       }
     }
     return fetch("http://localhost:3001/api/v1/picks", {
