@@ -6,7 +6,8 @@ const MyPicks = ({week, teams, user}) => {
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   let finalHome = teams.find(team => team.attributes.number === finalGame.home)
   let finalAway = teams.find(team => team.attributes.number === finalGame.away)
-
+  console.log(user)
+  
   return (
     teams.length > 0 ?
     <>

@@ -53,6 +53,7 @@ export const getMyGroups = () => {
       if (resp.error) {
         alert(resp.error)
       } else {
+        dispatch(clearGroups())
         dispatch(setMyGroups(resp.data))
       }
     })
