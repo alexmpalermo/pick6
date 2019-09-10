@@ -78,14 +78,15 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, history, update
           let home = teams.find(team => team.attributes.number === game.home)
           let away = teams.find(team => team.attributes.number === game.away)
           return (
-            <select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={home.attributes.number}>
+            <select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'}>
+              <option value='DEFAULT' disabled>Choose a team...</option>
               <option value={home.attributes.number}>{home.attributes.abrv}</option>
               <option value={away.attributes.number}>{away.attributes.abrv}</option>
             </select>
           )
         })}
         <input placeholder="tiebreaker" type="number" min="0" name="tiebreaker" value={formData.tiebreaker} onChange={handleTieChange} /><br/>
-        <input type="submit" value="Submit Picks" />
+        <input type="submit" value="Submit Picks" disabled={!(teamsArr.length === week.attributes.games.length)}/>
         </form>
       </div>
 
