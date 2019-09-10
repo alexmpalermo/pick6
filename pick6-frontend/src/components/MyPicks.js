@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const MyPicks = ({week, teams, user}) => {
+  
+  const finalGame = week.attributes.games[week.attributes.games.length - 1]
+  let finalHome = teams.find(team => team.attributes.number === finalGame.home)
+  let finalAway = teams.find(team => team.attributes.number === finalGame.away)
 
   return (
     teams.length > 0 ?
@@ -15,6 +19,7 @@ const MyPicks = ({week, teams, user}) => {
             <th>Home</th>
             <th>Spread</th>
             <th>Away</th>
+            <th>My picks</th>
           </tr>
           </thead>
           <tbody>
@@ -26,9 +31,16 @@ const MyPicks = ({week, teams, user}) => {
                 <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
                 <td>{away.attributes.name}</td>
+                <td>my pick</td>
               </tr>
             )
           })}
+          <tr>
+            <td>{finalHome.attributes.name}</td>
+            <td>{finalGame.handicap}</td>
+            <td>{finalAway.attributes.name}</td>
+            <td>My tiebreaker pick</td>
+          </tr>
           </tbody>
         </table>
       </div>
