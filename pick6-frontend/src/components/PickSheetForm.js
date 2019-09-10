@@ -4,10 +4,6 @@ import { updatePickSheetForm } from '../actions/pickSheetForm.js'
 import { createPickSheet } from '../actions/myPicks.js'
 
 const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetForm, createPickSheet}) => {
-  console.log(week)
-  console.log("user is...", user)
-  console.log("teams is top..", teams)
-
 
   const handleTieChange = event => {
     const {name, value} = event.target
@@ -82,7 +78,6 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
 }
 
 const mapStateToProps = state => {
-  console.log("state...", state)
   return {
     user: state.currentUser,
     formData: state.pickSheetForm,

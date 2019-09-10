@@ -40,7 +40,6 @@ class App extends React.Component {
             }
           }/>
           <Route path='/weeks/:id' render={props => {
-              console.log("IN APP...", teams)
               const week = weeks.find(week => week.id === props.match.params.id)
               return <WeekShow week={week} teams={teams} {...props}/>
             }
