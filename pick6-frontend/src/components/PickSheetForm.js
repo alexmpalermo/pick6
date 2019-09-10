@@ -1,28 +1,56 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updatePickSheetForm } from '../actions/pickSheetForm.js'
+import { updatePickSheetFormTeams, removeTeamFromPickSheetForm } from '../actions/pickSheetFormTeams.js'
 import { createPickSheet } from '../actions/myPicks.js'
 
-const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetForm, createPickSheet}) => {
+const PickSheetForm = ({teams, teamsArr, week, weekId, userId, formData, history, updatePickSheetForm, updatePickSheetFormTeams, removeTeamFromPickSheetForm, createPickSheet}) => {
 
   const handleTieChange = event => {
     const {name, value} = event.target
-    const updatedFormInfo = {
-      ...formData,
-      [name]: value
-    }
-    updatePickSheetForm(updatedFormInfo)
+    updatePickSheetForm(name, value)
   }
+
+  const checkTeamsArr = value => {
+    if (teamsArr.includes(value)) {
+      return ""
+    } else {
+      return value
+    }
+  }
+
 
   const handleTeamChange = event => {
     const {value} = event.target
-    const updatedFormInfo = formData.teams.concat(value)
-    updatePickSheetForm(updatedFormInfo)
+    const otherTeam = () => {
+      const currentGame = week.attributes.games.find(g => g.away === parseInt(value) || g.home === parseInt(value))
+
+      if (currentGame.home === parseInt(value)) {
+        return `${currentGame.away}`
+      } else {
+        return `${currentGame.home}`
+      }
+    }
+
+    if (teamsArr.includes(value)) {
+      return null
+    } else if (teamsArr.includes(otherTeam())) {
+      removeTeamFromPickSheetForm(otherTeam())
+      updatePickSheetFormTeams(value)
+    } else {
+      updatePickSheetFormTeams(value)
+    }
+
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    createPickSheet(formData, user, week, history)
+    createPickSheet({
+      ...formData,
+      userId,
+      weekId
+    }, history
+    )
   }
 
   return (
@@ -60,9 +88,9 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
           let home = teams.find(team => team.attributes.number === game.home)
           let away = teams.find(team => team.attributes.number === game.away)
           return (
-            <select key={home.id} name={'team-'+ i} value={formData.teams} onChange={handleTeamChange} multiple={false} >
-              <option value={home}>{home.attributes.abrv}</option>
-              <option value={away}>{away.attributes.abrv}</option>
+            <select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={home.attributes.number}>
+              <option value={home.attributes.number}>{home.attributes.abrv}</option>
+              <option value={away.attributes.number}>{away.attributes.abrv}</option>
             </select>
           )
         })}
@@ -78,11 +106,16 @@ const PickSheetForm = ({teams, week, user, formData, history, updatePickSheetFor
 }
 
 const mapStateToProps = state => {
+  const userId = state.currentUser ? state.currentUser.id : ""
+  const weekId = state.week ? state.week.id : ""
+
   return {
-    user: state.currentUser,
+    userId,
+    weekId,
     formData: state.pickSheetForm,
+    teamsArr: state.pickSheetFormTeams,
     teams: state.teams
   }
 }
 
-export default connect(mapStateToProps, {updatePickSheetForm, createPickSheet})(PickSheetForm)
+export default connect(mapStateToProps, {updatePickSheetForm, updatePickSheetFormTeams, removeTeamFromPickSheetForm, createPickSheet})(PickSheetForm)

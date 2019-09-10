@@ -1,15 +1,14 @@
 const initialState = {
   tiebreaker: "",
-  user_id: "",
-  week_id: "",
-  teams: []
+  userId: "",
+  weekId: ""
 }
 
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_PICK_SHEET_FORM":
-      return console.log("reducer update...", state),{
+      return {
         ...state,
         [action.formData.name]: action.formData.value
       }
