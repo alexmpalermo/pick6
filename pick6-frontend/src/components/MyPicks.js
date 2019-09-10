@@ -6,8 +6,11 @@ const MyPicks = ({week, teams, user}) => {
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   let finalHome = teams.find(team => team.attributes.number === finalGame.home)
   let finalAway = teams.find(team => team.attributes.number === finalGame.away)
-  console.log(user)
-  
+  const picks = user.attributes.picks.find(p => p.week_id === parseInt(week.id))
+
+
+  console.log(picks)
+
   return (
     teams.length > 0 ?
     <>
@@ -27,12 +30,14 @@ const MyPicks = ({week, teams, user}) => {
           {week.attributes.games.map(game => {
             let home = teams.find(team => team.attributes.number === game.home)
             let away = teams.find(team => team.attributes.number === game.away)
+            const myPick = picks.teams.find(t => t.number === home.attributes.number || t.number === away.attributes.number)
+
             return (
               <tr key={home.id}>
                 <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
                 <td>{away.attributes.name}</td>
-                <td>my pick</td>
+                <td>{myPick.abrv}</td>
               </tr>
             )
           })}
@@ -40,7 +45,7 @@ const MyPicks = ({week, teams, user}) => {
             <td>{finalHome.attributes.name}</td>
             <td>{finalGame.handicap}</td>
             <td>{finalAway.attributes.name}</td>
-            <td>My tiebreaker pick</td>
+            <td>{picks.tiebreaker}</td>
           </tr>
           </tbody>
         </table>
