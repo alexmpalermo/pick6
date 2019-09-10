@@ -16,14 +16,14 @@ class WeekShow extends React.Component {
 
   render(){
 
-    const { week, teams } = this.props
+    const { week, teams, currentUser } = this.props
 
     return (
       week ?
       <><div>
         <h3>WEEK {week.attributes.number}</h3>
         <h4>Pick Sheet Form if they havent submitted yet</h4>
-        <PickSheetForm week={week}/>
+        {currentUser && currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) ? null : <PickSheetForm week={week}/>}
         <h4>Show thier picks if they have already submitted</h4>
         <MyPicks week={week} />
         <h4>Show full table with everyones picks if week has started</h4>

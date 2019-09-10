@@ -9,6 +9,15 @@ class UserSerializer
       adminid: group.adminid
     }
     end
-  end 
+  end
+  attribute :picks do |user|
+    user.picks.map do |pick| {
+      tiebreaker: pick.tiebreaker,
+      points: pick.points,
+      week_id: pick.week_id,
+      teams: pick.teams 
+    }
+    end
+  end
 
 end
