@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 const MyPicks = ({week, teams, user}) => {
 
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
-  let finalHome = teams.find(team => team.attributes.number === finalGame.home)
-  let finalAway = teams.find(team => team.attributes.number === finalGame.away)
+  const finalHome = teams.find(team => team.attributes.number === finalGame.home)
+  const finalAway = teams.find(team => team.attributes.number === finalGame.away)
   const picks = user.attributes.picks.find(p => p.week_id === parseInt(week.id))
 
 
@@ -28,8 +28,8 @@ const MyPicks = ({week, teams, user}) => {
           </thead>
           <tbody>
           {week.attributes.games.map(game => {
-            let home = teams.find(team => team.attributes.number === game.home)
-            let away = teams.find(team => team.attributes.number === game.away)
+            const home = teams.find(team => team.attributes.number === game.home)
+            const away = teams.find(team => team.attributes.number === game.away)
             const myPick = picks.teams.find(t => t.number === home.attributes.number || t.number === away.attributes.number)
 
             return (

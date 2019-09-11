@@ -24,7 +24,7 @@ class WeekShow extends React.Component {
         <h3>WEEK {week.attributes.number}</h3>
         {currentUser && currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) ? <MyPicks week={week} /> : <PickSheetForm week={week}/>}
         <h4>Show full table with everyones picks if week has started</h4>
-        <WeekTable week={week}/>
+        <WeekTable week={week} />
       </div></> :
       null
     )

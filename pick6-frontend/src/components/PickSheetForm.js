@@ -59,8 +59,8 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, history, update
           </thead>
           <tbody>
           {week.attributes.games.map(game => {
-            let home = teams.find(team => team.attributes.number === game.home)
-            let away = teams.find(team => team.attributes.number === game.away)
+            const home = teams.find(team => team.attributes.number === game.home)
+            const away = teams.find(team => team.attributes.number === game.away)
             return (
               <tr key={home.id}>
                 <td>{home.attributes.name}</td>
@@ -75,8 +75,8 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, history, update
       <div className="pick-form">
         <form onSubmit={handleSubmit}>
         {week.attributes.games.map((game, i) => {
-          let home = teams.find(team => team.attributes.number === game.home)
-          let away = teams.find(team => team.attributes.number === game.away)
+          const home = teams.find(team => team.attributes.number === game.home)
+          const away = teams.find(team => team.attributes.number === game.away)
           return (
             <select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'}>
               <option value='DEFAULT' disabled>Choose a team...</option>

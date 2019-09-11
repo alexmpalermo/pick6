@@ -41,7 +41,7 @@ class App extends React.Component {
           }/>
           <Route path='/weeks/:id' render={props => {
               const week = weeks.find(week => week.id === props.match.params.id)
-              return <WeekShow week={week} teams={teams} {...props}/>
+              return <WeekShow week={week} groups={groups} teams={teams} {...props}/>
             }
           }/>
           <Route exact path='/groups/:id/edit' render={props => {

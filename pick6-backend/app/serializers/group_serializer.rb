@@ -5,7 +5,8 @@ class GroupSerializer
     group.users.map do |user| {
       name: user.name,
       email: user.email,
-      venmo: user.venmo
+      venmo: user.venmo,
+      picks: user.picks
     }
     end
   end

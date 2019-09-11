@@ -4,7 +4,8 @@ class PickSerializer
   attribute :teams do |pick|
     pick.teams.map do |team| {
       name: team.name,
-      abrv: team.abrv
+      abrv: team.abrv,
+      number: team.number
     }
     end
   end

@@ -16,4 +16,13 @@ class WeekSerializer
     }
     end
   end
+  attribute :picks do |week|
+    week.picks.map do |pick| {
+      tiebreaker: pick.tiebreaker,
+      points: pick.points,
+      userId: pick.user_id,
+      teams: pick.teams
+    }
+    end
+  end
 end
