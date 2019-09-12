@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 
 const WeekTable = ({week, user, teams, groups}) => {
   const group = groups ? groups.find(group => group.id === week.relationships.group.data.id) : null
+  const finalGame = week.attributes.games[week.attributes.games.length - 1]
+  const winners = []
+  let userWins = []
 
   return (
     teams.length > 0 && groups.length > 0 ?
@@ -22,7 +25,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               })}
               <td>.</td>
               <td>.</td>
-              <td>.</td>
+              <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>SPREAD</strong></td>
@@ -33,7 +36,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               })}
               <td>.</td>
               <td>.</td>
-              <td>.</td>
+              <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>AWAY</strong></td>
@@ -43,9 +46,9 @@ const WeekTable = ({week, user, teams, groups}) => {
                   <td>{away.attributes.abrv}</td>
                 )
               })}
+              <td><strong>POINTS</strong></td>
               <td>.</td>
-              <td>.</td>
-              <td>.</td>
+              <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>WINNING TEAM</strong></td>
@@ -53,12 +56,14 @@ const WeekTable = ({week, user, teams, groups}) => {
                 const winner = teams.find(team => team.attributes.number === g.winner)
                 return (
                   g.winner > 0 ?
-                  <td>{winner.attributes.abrv}</td> : null
+                  <><td>{winner.attributes.abrv}</td>
+                  {winners.push(g.winner.attributes.number)}</>
+                  : null
                 )
               })}
+              <td>{finalGame.total ? finalGame.total : "."}</td>
               <td>.</td>
-              <td>.</td>
-              <td>.</td>
+              <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>NAME</strong></td>
@@ -71,9 +76,15 @@ const WeekTable = ({week, user, teams, groups}) => {
                   <td>{pick.username}</td>
                   {pick.teams.map(t => {
                     return (
-                      <td>{t.abrv}</td>
+                      <><td>{t.abrv}</td>
+                      {winners.includes(t.number) ?
+                        userWins.push(t.number)
+                        : null}</>
                     )
                   })}
+                  <td>{pick.tiebreaker}</td>
+                  <td>.</td>
+                  <td><strong>{userWins.length > 0 ? userWins.length : 0}</strong></td>
                 </tr>
               )
             })}
