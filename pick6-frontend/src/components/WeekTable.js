@@ -68,7 +68,7 @@ const WeekTable = ({week, user, teams, groups}) => {
             {week.attributes.picks.map(pick => {
               return (
                 <tr>
-                  <td>{pick.user.name}</td>
+                  <td>{}</td>
                 </tr>
               )
             })}
