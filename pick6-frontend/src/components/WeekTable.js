@@ -5,7 +5,45 @@ const WeekTable = ({week, user, teams, groups}) => {
   const group = groups ? groups.find(group => group.id === week.relationships.group.data.id) : null
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   const winners = []
-  let userWins = []
+  const allPoints = []
+  const userWhoWon = () => {
+    const max = Math.max(...allPoints)
+    const picksMax = week.attributes.picks.filter(p => p.points === max)
+
+    if (picksMax.length === 1) {
+      return (
+        <><h3>This Week's Winner Is: </h3>
+        <h3>{picksMax.username}</h3>
+        </>
+      )
+    } else if (picksMax.length > 1) {
+      const tiebreakers = picksMax.map(pick => pick.tiebreaker)
+      const closest = tiebreakers.reduce((prev, curr) => {
+        return (Math.abs(curr - finalGame.total) < Math.abs(prev - finalGame.total) ? curr : prev);
+      });
+      const closestWinner = picksMax.filter(pick => pick.tiebreaker === closest)
+      if (closestWinner.length > 1) {
+        const multWinners = closestWinner.map(pick => {
+          return (`${pick.username}    `)
+        })
+        return(
+          <><h3>This Week's Winners Are: </h3>
+          <h3>{multWinners}</h3>
+          </>
+        )
+      } else {
+        return(
+          <><h3>This Week's Winner Is: </h3>
+          <h3>{closestWinner.username}</h3>
+          </>
+        )
+      }
+    } else {
+      return null
+    }
+  }
+  console.log(allPoints)
+  console.log(winners)
 
   return (
     teams.length > 0 && groups.length > 0 ?
@@ -13,6 +51,7 @@ const WeekTable = ({week, user, teams, groups}) => {
     <div>
       <h2>WEEK {week.attributes.number} SPREADSHEET</h2>
       <div>
+      <span>{allPoints.length > 0 ? userWhoWon() : null}</span>
         <table>
           <tbody>
             <tr>
@@ -75,6 +114,17 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td>.</td>
             </tr>
             {week.attributes.picks.map(pick => {
+              const userWins = []
+              const pointsTotal = () => {
+                if (userWins.length > 0) {
+                  allPoints.push(userWins.length)
+                  pick.points = userWins.length
+                  return pick.points
+                } else {
+                  return 0
+                }
+              }
+              console.log(allPoints)
               return (
                 <tr>
                   <td>{pick.username}</td>
@@ -93,7 +143,7 @@ const WeekTable = ({week, user, teams, groups}) => {
                   })}
                   <td>{pick.tiebreaker}</td>
                   <td>.</td>
-                  <td><strong>{userWins.length > 0 ? userWins.length : 0}</strong></td>
+                  <td><strong>{pointsTotal()}</strong></td>
                 </tr>
               )
             })}
