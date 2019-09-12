@@ -66,6 +66,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td>.</td>
             </tr>
             {week.attributes.picks.map(pick => {
+              console.log(pick)
               return (
                 <tr>
                   <td>{}</td>

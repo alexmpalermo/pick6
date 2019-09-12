@@ -21,7 +21,8 @@ class WeekSerializer
       tiebreaker: pick.tiebreaker,
       points: pick.points,
       userId: pick.user_id,
-      teams: pick.teams
+      teams: pick.teams,
+      username: pick.user.name
     }
     end
   end

@@ -8,9 +8,6 @@ const MyPicks = ({week, teams, user}) => {
   const finalAway = teams.find(team => team.attributes.number === finalGame.away)
   const picks = user.attributes.picks.find(p => p.week_id === parseInt(week.id))
 
-
-  console.log(picks)
-
   return (
     teams.length > 0 ?
     <>
