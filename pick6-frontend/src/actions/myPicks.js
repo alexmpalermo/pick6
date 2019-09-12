@@ -11,7 +11,7 @@ export const addPick = pick => {
 
 // async
 
-export const createPickSheet = (pickData, teamsArr, history) => {
+export const createPickSheet = (pickData, teamsArr) => {
   return dispatch => {
     const sendablePickData = {
       pick: {
@@ -34,10 +34,9 @@ export const createPickSheet = (pickData, teamsArr, history) => {
       if (resp.error) {
         alert(resp.error)
       } else {
-        console.log(resp.data)
         dispatch(addPick(resp.data))
         dispatch(resetPickSheetForm())
-
+        window.location.reload()
       }
     })
     .catch(console.log)
