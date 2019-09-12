@@ -53,13 +53,17 @@ const WeekTable = ({week, user, teams, groups}) => {
             <tr>
               <td><strong>WINNING TEAM</strong></td>
               {week.attributes.games.map(g => {
-                const winner = teams.find(team => team.attributes.number === g.winner)
+                const winner = teams.find(team => team.attributes.number === parseInt(g.winner))
+                const winAdd = () => {
+                  winners.push(winner.attributes.number)
+                  return winner.attributes.abrv
+                }
                 return (
-                  g.winner > 0 ?
-                  <><td>{winner.attributes.abrv}</td>
-                  {winners.push(g.winner.attributes.number)}</>
-                  : null
+                  parseInt(g.winner) > 0 ?
+                  <td>{winAdd()}</td>
+                  : <td> - </td>
                 )
+
               })}
               <td>{finalGame.total ? finalGame.total : "."}</td>
               <td>.</td>
@@ -75,11 +79,16 @@ const WeekTable = ({week, user, teams, groups}) => {
                 <tr>
                   <td>{pick.username}</td>
                   {pick.teams.map(t => {
-                    return (
-                      <><td>{t.abrv}</td>
-                      {winners.includes(t.number) ?
+                    const pointAdd = () => {
+                      if (winners.includes(t.number)) {
                         userWins.push(t.number)
-                        : null}</>
+                        return (t.abrv)
+                      } else {
+                        return (t.abrv)
+                      }
+                    }
+                    return (
+                      <td>{pointAdd()}</td>
                     )
                   })}
                   <td>{pick.tiebreaker}</td>
