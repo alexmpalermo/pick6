@@ -32,6 +32,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(AdminPage)
-
-
-// <AdminEditGameForm game={game} />
