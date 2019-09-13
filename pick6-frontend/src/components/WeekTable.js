@@ -6,6 +6,81 @@ const WeekTable = ({week, user, teams, groups}) => {
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   const winners = []
   const allPoints = []
+
+  const homes = teams.length > 0 ?
+  week.attributes.games.map(g => {
+    const home = teams.find(team => team.attributes.number === g.home)
+    return (
+      <td key={home.id}>{home.attributes.abrv}</td>
+    )
+  }) : null
+
+  const handicaps = week.attributes.games.map((g, i) => {
+    return (
+      <td key={i}>{g.handicap}</td>
+    )
+  })
+
+  const aways = teams.length > 0 ?
+  week.attributes.games.map(g => {
+    const away = teams.find(team => team.attributes.number === g.away)
+    return (
+      <td key={away.id}>{away.attributes.abrv}</td>
+    )
+  }) : null
+
+  const winningteams = teams.length > 0 ?
+  week.attributes.games.map((g, i) => {
+    const winner = teams.find(team => team.attributes.number === parseInt(g.winner))
+    const winAdd = () => {
+      winners.push(winner.attributes.number)
+      return winner.attributes.abrv
+    }
+    const key = `${g.id}a${i}`
+    const key2 = `${g.id}b${i}`
+    return (
+      parseInt(g.winner) > 0 ?
+      <td key={key}>{winAdd()}</td>
+      : <td key={key2}> - </td>
+    )
+  }) : null
+
+  const finalpoints = week.attributes.picks.map((pick, i) => {
+    const userWins = []
+    const pointsTotal = () => {
+      if (userWins.length > 0) {
+        allPoints.push(userWins.length)
+        pick.points = userWins.length
+        return pick.points
+      } else {
+        return 0
+      }
+    }
+    const key4 = `${pick.id}a${i}`
+    return (
+      <tr key={key4}>
+        <td>{pick.username}</td>
+        {pick.teams.map((t, i) => {
+          const pointAdd = () => {
+            if (winners.includes(t.number)) {
+              userWins.push(t.number)
+              return (t.abrv)
+            } else {
+              return (t.abrv)
+            }
+          }
+          const key3 = `${t.id}a${i}`
+          return (
+            <td key={key3}>{pointAdd()}</td>
+          )
+        })}
+        <td>{pick.tiebreaker}</td>
+        <td>.</td>
+        <td><strong>{pointsTotal()}</strong></td>
+      </tr>
+    )
+  })
+
   const userWhoWon = () => {
     const max = Math.max(...allPoints)
     const picksMax = week.attributes.picks.filter(p => p.points === max)
@@ -13,7 +88,7 @@ const WeekTable = ({week, user, teams, groups}) => {
     if (picksMax.length === 1) {
       return (
         <><h3>This Week's Winner Is: </h3>
-        <h3>{picksMax.username}</h3>
+        <h3>{picksMax[0].username}</h3>
         </>
       )
     } else if (picksMax.length > 1) {
@@ -34,7 +109,7 @@ const WeekTable = ({week, user, teams, groups}) => {
       } else {
         return(
           <><h3>This Week's Winner Is: </h3>
-          <h3>{closestWinner.username}</h3>
+          <h3>{closestWinner[0].username}</h3>
           </>
         )
       }
@@ -42,8 +117,6 @@ const WeekTable = ({week, user, teams, groups}) => {
       return null
     }
   }
-  console.log(allPoints)
-  console.log(winners)
 
   return (
     teams.length > 0 && groups.length > 0 ?
@@ -56,54 +129,28 @@ const WeekTable = ({week, user, teams, groups}) => {
           <tbody>
             <tr>
               <td><strong>HOME</strong></td>
-              {week.attributes.games.map(g => {
-                const home = teams.find(team => team.attributes.number === g.home)
-                return (
-                  <td>{home.attributes.abrv}</td>
-                )
-              })}
+              {homes}
               <td>.</td>
               <td>.</td>
               <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>SPREAD</strong></td>
-              {week.attributes.games.map(g => {
-                return (
-                  <td>{g.handicap}</td>
-                )
-              })}
+              {handicaps}
               <td>.</td>
               <td>.</td>
               <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>AWAY</strong></td>
-              {week.attributes.games.map(g => {
-                const away = teams.find(team => team.attributes.number === g.away)
-                return (
-                  <td>{away.attributes.abrv}</td>
-                )
-              })}
+              {aways}
               <td><strong>POINTS</strong></td>
               <td>.</td>
               <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>WINNING TEAM</strong></td>
-              {week.attributes.games.map(g => {
-                const winner = teams.find(team => team.attributes.number === parseInt(g.winner))
-                const winAdd = () => {
-                  winners.push(winner.attributes.number)
-                  return winner.attributes.abrv
-                }
-                return (
-                  parseInt(g.winner) > 0 ?
-                  <td>{winAdd()}</td>
-                  : <td> - </td>
-                )
-
-              })}
+              {winningteams}
               <td>{finalGame.total ? finalGame.total : "."}</td>
               <td>.</td>
               <td><strong>TOTAL WINS</strong></td>
@@ -113,41 +160,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td>.</td>
               <td>.</td>
             </tr>
-            {week.attributes.picks.map(pick => {
-              const userWins = []
-              const pointsTotal = () => {
-                if (userWins.length > 0) {
-                  allPoints.push(userWins.length)
-                  pick.points = userWins.length
-                  return pick.points
-                } else {
-                  return 0
-                }
-              }
-              console.log(allPoints)
-              return (
-                <tr>
-                  <td>{pick.username}</td>
-                  {pick.teams.map(t => {
-                    const pointAdd = () => {
-                      if (winners.includes(t.number)) {
-                        userWins.push(t.number)
-                        return (t.abrv)
-                      } else {
-                        return (t.abrv)
-                      }
-                    }
-                    return (
-                      <td>{pointAdd()}</td>
-                    )
-                  })}
-                  <td>{pick.tiebreaker}</td>
-                  <td>.</td>
-                  <td><strong>{pointsTotal()}</strong></td>
-                </tr>
-              )
-            })}
-
+            {finalpoints}
           </tbody>
         </table>
       </div>
