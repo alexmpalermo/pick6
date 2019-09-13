@@ -16,6 +16,7 @@ import JoinGroup from './components/JoinGroup.js'
 import WeekShow from './components/WeekShow.js'
 import Weeks from './components/Weeks.js'
 import PickSheetForm from './components/PickSheetForm.js'
+import Admin from '/components/Admin.js'
 
 class App extends React.Component {
 
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route exact path='/' render={(props)=> loggedIn ? <UserShow {...props}/> : <Home {...props}/>} />
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
+          <Route exact path='/admin' render={props => <Admin {...props} />}/>
           <Route exact path='/groups/join' render={props => <JoinGroup {...props} />}/>
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {

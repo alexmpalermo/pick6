@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "api/v1/signup", to: "api/v1/users#create"
   post "api/v1/groups/join", to: "api/v1/groups#join"
   get "api/v1/groups/:id/weeks", to: "api/v1/weeks#index"
+  get "api/v1/admin", to: "api/v1/users#admin"
 
   # I want my api to be pick6.com/api/v1/resource
   namespace :api do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
       resources :games
       resources :groups
       resources :weeks
-      resources :teams 
+      resources :teams
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

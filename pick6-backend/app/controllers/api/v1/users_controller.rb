@@ -14,6 +14,18 @@ class Api::V1::UsersController < ApplicationController
     render json: user_json
   end
 
+  # GET /admin
+  def admin
+    if current_user == User.find_by_id(18)
+      user_json = UserSerializer.new(current_user).serialized_json
+      render json: user_json
+    else
+      render json: {
+        error: "You must be an admin to access this page."
+      }
+    end 
+  end
+
   # POST /users
   def create
     @user = User.new(user_params)
