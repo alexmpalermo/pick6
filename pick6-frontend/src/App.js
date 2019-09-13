@@ -8,14 +8,11 @@ import Navbar from './components/Navbar.js'
 import UserShow from './components/UserShow.js'
 import Home from './components/Home.js'
 import GroupShow from './components/GroupShow.js'
-import GroupCodeShow from './components/GroupCodeShow.js'
 import Signup from './components/Signup.js'
 import NewGroupForm from './components/NewGroupForm.js'
 import EditGroupForm from './components/EditGroupForm.js'
 import JoinGroup from './components/JoinGroup.js'
 import WeekShow from './components/WeekShow.js'
-import Weeks from './components/Weeks.js'
-import PickSheetForm from './components/PickSheetForm.js'
 import AdminPage from './components/AdminPage.js'
 import AdminEditGameForm from './components/AdminEditGameForm.js'
 
@@ -26,7 +23,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn, groups, currentUser, weeks, teams, games } = this.props
+    const { loggedIn, groups, weeks, teams, games } = this.props
     return (
       <div className="App">
         <Navbar location={this.props.location}/>

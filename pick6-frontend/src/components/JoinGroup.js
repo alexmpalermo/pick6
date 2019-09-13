@@ -5,7 +5,6 @@ import { joinGroup } from '../actions/myGroups.js'
 
 
 const JoinGroup = ({ formData, currentUser, history, updateJoinGroupForm, joinGroup }) => {
-  const {code} = formData
 
   const handleChange = event => {
     const {name, value} = event.target
@@ -14,7 +13,6 @@ const JoinGroup = ({ formData, currentUser, history, updateJoinGroupForm, joinGr
 
   const handleSubmit = event => {
     event.preventDefault()
-    const groupId =
     joinGroup({
       ...formData,
       currentUser

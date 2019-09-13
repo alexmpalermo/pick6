@@ -1,9 +1,7 @@
 import React from 'react'
-import {Link, Route} from 'react-router-dom'
-import EditGroupForm from './EditGroupForm.js'
+import {Link} from 'react-router-dom'
 import GroupCodeShow from './GroupCodeShow.js'
 import Weeks from './Weeks.js'
-import WeekShow from './WeekShow.js'
 import { getMyWeeks } from '../actions/myWeeks.js'
 import { connect } from 'react-redux'
 

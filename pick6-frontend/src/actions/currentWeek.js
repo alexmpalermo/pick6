@@ -1,4 +1,4 @@
-import { getMyTeams } from './teams.js'
+
 // sync
 
 export const setCurrentWeek = week => {

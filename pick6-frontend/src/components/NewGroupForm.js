@@ -5,8 +5,6 @@ import { createGroup } from '../actions/myGroups.js'
 
 const NewGroupForm = ({ formData, adminid, code, history, updateNewGroupForm, createGroup}) => {
 
-  const {name, price} = formData
-
   const handleChange = event => {
     const {name, value} = event.target
     updateNewGroupForm(name, value)

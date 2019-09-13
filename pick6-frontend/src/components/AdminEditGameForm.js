@@ -30,8 +30,7 @@ class AdminEditGameForm extends React.Component {
   }
 
   render() {
-    const { formData, game} = this.props
-    const gameId = game ? game.id : null
+    const { formData} = this.props
 
     return (
       <>

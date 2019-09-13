@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCurrentWeek } from '../actions/currentWeek.js'
 import WeekTable from './WeekTable.js'
@@ -16,7 +15,7 @@ class WeekShow extends React.Component {
 
   render(){
 
-    const { week, teams, currentUser } = this.props
+    const { week, currentUser } = this.props
 
     return (
       week ?
@@ -35,8 +34,7 @@ class WeekShow extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    week: state.currentWeek,
-    teams: state.teams
+    week: state.currentWeek
   }
 }
 

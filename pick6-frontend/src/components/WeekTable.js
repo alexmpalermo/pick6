@@ -122,6 +122,7 @@ const WeekTable = ({week, user, teams, groups}) => {
     teams.length > 0 && groups.length > 0 ?
     <>
     <div>
+      <h2>{group.attributes.name}</h2>
       <h2>WEEK {week.attributes.number} SPREADSHEET</h2>
       <div>
       <span>{allPoints.length > 0 ? userWhoWon() : null}</span>
