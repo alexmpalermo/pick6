@@ -32,11 +32,13 @@ class AdminEditGameForm extends React.Component {
   render() {
     const { formData, game} = this.props
     const gameId = game ? game.id : null
+
     return (
       <>
       <form onSubmit={this.handleSubmit}>
         <input placeholder="home" type="text" name="home" value={formData.home} onChange={this.handleChange} /><br/>
         <input placeholder="away" type="text" name="away" value={formData.away} onChange={this.handleChange} /><br/>
+        <input placeholder="winner" type="text" name="winner" value={formData.winner} onChange={this.handleChange} /><br/>
         <input placeholder="home score" type="number" min="0" name="hscore" value={formData.hscore} onChange={this.handleChange} /><br/>
         <input placeholder="away score" type="number" min="0" name="ascore" value={formData.ascore} onChange={this.handleChange} /><br/>
         <input placeholder="handicap" type="number" min="0" name="handicap" value={formData.handicap} onChange={this.handleChange} /><br/>

@@ -49,7 +49,8 @@ export const updateGame = (gameData) => {
       handicap: gameData.handicap,
       total: gameData.total,
       day: gameData.day,
-      time: gameData.time
+      time: gameData.time,
+      winner: gameData.winner
     }
     return fetch(`http://localhost:3001/api/v1/games/${gameData.gameId}`, {
       credentials: "include",

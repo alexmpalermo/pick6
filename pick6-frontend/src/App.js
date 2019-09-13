@@ -17,6 +17,7 @@ import WeekShow from './components/WeekShow.js'
 import Weeks from './components/Weeks.js'
 import PickSheetForm from './components/PickSheetForm.js'
 import AdminPage from './components/AdminPage.js'
+import AdminEditGameForm from './components/AdminEditGameForm.js'
 
 class App extends React.Component {
 
@@ -44,6 +45,11 @@ class App extends React.Component {
           <Route path='/weeks/:id' render={props => {
               const week = weeks.find(week => week.id === props.match.params.id)
               return <WeekShow week={week} groups={groups} teams={teams} {...props}/>
+            }
+          }/>
+          <Route path='/games/:id/edit' render={props => {
+              const game = games.find(game => game.id === props.match.params.id)
+              return <AdminEditGameForm game={game} {...props}/>
             }
           }/>
           <Route exact path='/groups/:id/edit' render={props => {

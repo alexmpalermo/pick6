@@ -6,7 +6,8 @@ const initialState = {
   handicap: "",
   total: "",
   day: "",
-  time: ""
+  time: "",
+  winner: ""
 }
 
 
