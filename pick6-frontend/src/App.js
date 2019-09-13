@@ -16,7 +16,7 @@ import JoinGroup from './components/JoinGroup.js'
 import WeekShow from './components/WeekShow.js'
 import Weeks from './components/Weeks.js'
 import PickSheetForm from './components/PickSheetForm.js'
-import Admin from '/components/Admin.js'
+import AdminPage from './components/AdminPage.js'
 
 class App extends React.Component {
 
@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn, groups, currentUser, weeks, teams } = this.props
+    const { loggedIn, groups, currentUser, weeks, teams, games } = this.props
     return (
       <div className="App">
         <Navbar location={this.props.location}/>
@@ -33,7 +33,7 @@ class App extends React.Component {
           <Route exact path='/' render={(props)=> loggedIn ? <UserShow {...props}/> : <Home {...props}/>} />
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
-          <Route exact path='/admin' render={props => <Admin {...props} />}/>
+          <Route exact path='/admin' render={props => <AdminPage {...props} />}/>
           <Route exact path='/groups/join' render={props => <JoinGroup {...props} />}/>
           <Route exact path='/groups/new' component={NewGroupForm} />
           <Route exact path='/groups/:id' render={props => {
@@ -65,7 +65,8 @@ const mapStateToProps = state => {
     loggedIn: !!state.currentUser,
     groups: state.myGroups,
     weeks: state.myWeeks,
-    teams: state.teams
+    teams: state.teams,
+    games: state.games
   }
 }
 

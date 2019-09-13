@@ -2,7 +2,8 @@ import { resetLoginForm } from './loginForm.js'
 import { getMyGroups, clearGroups } from './myGroups.js'
 import { resetSignupForm } from './signupForm.js'
 import { getMyTeams } from './teams.js'
-// import { getMyGames } from './games.js'
+import { getMyGames } from './games.js'
+
 
 // sync
 
@@ -96,6 +97,7 @@ export const getCurrentUser = () => {
         dispatch(setCurrentUser(resp.data))
         dispatch(getMyGroups())
         dispatch(getMyTeams())
+        dispatch(getMyGames())
       }
     })
     .catch(console.log)
