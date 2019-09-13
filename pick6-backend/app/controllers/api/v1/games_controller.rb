@@ -4,13 +4,12 @@ class Api::V1::GamesController < ApplicationController
   # GET /games
   def index
     @games = Game.all
-
     render json: GameSerializer.new(@games), status: :ok
   end
 
   # GET /games/1
   def show
-    render json: @game
+    render json: GameSerializer.new(@game), status: :ok
   end
 
   # POST /games
@@ -26,12 +25,15 @@ class Api::V1::GamesController < ApplicationController
 
   # PATCH/PUT /games/1
   def update
-    if @game.update(game_params)
-      render json: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
-  end
+   if @game.update(game_params)
+     render json:  GameSerializer.new(@game), status: :ok
+   else
+     error_resp = {
+       error: @game.errors.full_messages.to_sentence
+     }
+     render json: error_resp, status: :unprocessable_entity
+   end
+ end
 
   # DELETE /games/1
   def destroy
