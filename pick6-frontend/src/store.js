@@ -15,6 +15,7 @@ import games from './reducers/games.js'
 import myPicks from './reducers/myPicks.js'
 import pickSheetForm from './reducers/pickSheetForm.js'
 import pickSheetFormTeams from './reducers/pickSheetFormTeams.js'
+import adminForm from './reducers/adminForm.js'
 
 const reducer = combineReducers({
   users,
@@ -31,7 +32,8 @@ const reducer = combineReducers({
   games,
   myPicks,
   pickSheetForm,
-  pickSheetFormTeams 
+  pickSheetFormTeams,
+  adminForm 
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
