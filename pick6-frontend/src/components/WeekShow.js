@@ -34,14 +34,10 @@ class WeekShow extends React.Component {
       }
     }
 
-    const idk = week ? console.log("day", moment().format('YYYY-MM-DD'), week.attributes.games[0].day) : null
     return (
       week ?
       <><div>
-        <h3>WEEK {week.attributes.number}</h3>
         <span>{showSomething()}</span>
-        <h4>Show full table with everyones picks if week has started</h4>
-
       </div></> :
       null
     )
