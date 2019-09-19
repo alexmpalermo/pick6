@@ -6,23 +6,24 @@ const WeekTable = ({week, user, teams, groups}) => {
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   const winners = []
   const allPoints = []
+  const gamesInOrder = week.attributes.games.sort((a, b) => a.day > b.day);
 
   const homes = teams.length > 0 ?
-  week.attributes.games.map(g => {
+  gamesInOrder.map(g => {
     const home = teams.find(team => team.attributes.number === g.home)
     return (
       <td key={home.id}>{home.attributes.abrv}</td>
     )
   }) : null
 
-  const handicaps = week.attributes.games.map((g, i) => {
+  const handicaps = gamesInOrder.map((g, i) => {
     return (
       <td key={i}>{g.handicap}</td>
     )
   })
 
   const aways = teams.length > 0 ?
-  week.attributes.games.map(g => {
+  gamesInOrder.map(g => {
     const away = teams.find(team => team.attributes.number === g.away)
     return (
       <td key={away.id}>{away.attributes.abrv}</td>
@@ -30,7 +31,7 @@ const WeekTable = ({week, user, teams, groups}) => {
   }) : null
 
   const winningteams = teams.length > 0 ?
-  week.attributes.games.map((g, i) => {
+  gamesInOrder.map((g, i) => {
     const winner = teams.find(team => team.attributes.number === parseInt(g.winner))
     const winAdd = () => {
       winners.push(winner.attributes.number)
@@ -57,10 +58,18 @@ const WeekTable = ({week, user, teams, groups}) => {
       }
     }
     const key4 = `${pick.id}a${i}`
+    const picksss = gamesInOrder.map(g => {
+      return [g.home, g.away]
+    })
+    const picksOneArray = picksss.flat()
+    const picksInOrder = pick.teams.sort((a, b) => {
+      return picksOneArray.indexOf(a.number) - picksOneArray.indexOf(b.number)
+    })
+
     return (
       <tr key={key4}>
         <td>{pick.username}</td>
-        {pick.teams.map((t, i) => {
+        {picksInOrder.map((t, i) => {
           const pointAdd = () => {
             if (winners.includes(t.number)) {
               userWins.push(t.number)
@@ -98,8 +107,11 @@ const WeekTable = ({week, user, teams, groups}) => {
       });
       const closestWinner = picksMax.filter(pick => pick.tiebreaker === closest)
       if (closestWinner.length > 1) {
+        const lastpick = closestWinner[closestWinner.length-1]
         const multWinners = closestWinner.map(pick => {
-          return (`${pick.username}    `)
+          return (
+            pick === lastpick ? `${lastpick.username}`: `${pick.username} & `
+          )
         })
         return(
           <><h3>This Week's Winners Are: </h3>
