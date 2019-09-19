@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const AdminPage = props => {
+  console.log(props)
   const editLinks = props.teams.length > 0 && props.games.length > 0 ?
       props.games.map(game => {
       const homet = props.teams.find(t => t.attributes.number === parseInt(game.attributes.home))
@@ -15,10 +16,18 @@ const AdminPage = props => {
       </p>
       )
     }) : null
+
+  const display = () => {
+    if (props.currentUser.id === "18") {
+      return (<><h2>Welcome, Admin</h2><span>{editLinks}</span></>)
+    } else {
+      return (<p>You must be an admin to access this page.</p>)
+    }
+  }
+
   return (
     <div className="AdminPage">
-      <h2>Welcome, Admin</h2>
-      <span>{editLinks}</span>
+    {props.currentUser ? display() : null}
     </div>
   )
 }
