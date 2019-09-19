@@ -5,14 +5,14 @@ class Home extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentDate: moment().format('dddd MMMM Do YYYY'),
+      currentDate: moment().format('dddd, MMMM Do YYYY'),
       currentTime: moment().format('h:mm:ss a')
     };
   }
 
   componentDidMount() {
     this.interval = setInterval(() => this.setState({
-      currentDate: moment().format('dddd MMMM Do YYYY'),
+      currentDate: moment().format('dddd, MMMM Do YYYY'),
       currentTime: moment().format('h:mm:ss a')
     }), 1000);
   }
@@ -22,8 +22,10 @@ class Home extends React.Component {
   render() {
     return (
       <>
+      <span id="datetime">
         {this.state.currentDate}<br/>
         {this.state.currentTime}
+      </span>
       </>
     )
   }

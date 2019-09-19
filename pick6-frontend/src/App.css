@@ -34,6 +34,93 @@
 
 /*/////////////////////////// Navbar ///////////////////////////*/
 
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .Navbar {
+        font-size: 18px;
+        background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 10px;
+    }
+
+    .main-nav {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav-links {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.7);
+        align-self: center;
+    }
+
+    .Logout {
+      align-self: center;
+    }
+
+    #logo {
+        display: inline-block;
+        font-size: 22px;
+        align-self: center;
+        margin-left: 20px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    #datetime {
+      display: none;
+    }
+
+    .signlog-links {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+      align-self: center;
+    }
+
+    @media screen and (min-width: 768px) {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0;
+            height: 70px;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            margin-right: 30px;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .nav-links,
+        .Logout,
+        #logo {
+            margin-left: 40px;
+        }
+
+        #datetime {
+          display: flex;
+          color: rgba(255, 255, 255, 0.7);
+          align-self: center;
+          margin-left: 40px;
+          font-size: 18px;
+        }
+
+        .nav-links:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
 
 
 /*/////////////////////////// Boxes ///////////////////////////*/

@@ -7,16 +7,20 @@ import WeekDate from './WeekDate.js'
 const Navbar = (props) => {
   return (
     <div className="Navbar">
-      <h1>Pick6</h1>
-      {props.location.pathname === "/login" ? <><NavLink to="/signup">Sign Up</NavLink><br/><br/></> : null}
-      {props.location.pathname === "/signup" ? <><NavLink to="/login">Log In</NavLink><br/><br/></> : null}
-      {props.currentUser ?
-        <><WeekDate />
-        <br/><NavLink to="/groups/new">New Group</NavLink>
-        <br/><NavLink to="/">Home</NavLink>
-        <Logout /></>
+      <span className="main-nav">
+        <h1 id="logo">Pick6</h1>
+        {props.currentUser ?
+        <>
+          <NavLink to="/" className="nav-links">Home</NavLink>
+          <WeekDate />
+          <NavLink to="/groups/new" className="nav-links">New Group</NavLink>
+          <Logout />
+        </>
       : null}
+        {props.location.pathname === "/login" ? <><NavLink to="/signup" className="signlog-links">Sign Up</NavLink><br/><br/></> : null}
+        {props.location.pathname === "/signup" ? <><NavLink to="/login" className="signlog-links">Log In</NavLink><br/><br/></> : null}
 
+      </span>
     </div>
   )
 }
