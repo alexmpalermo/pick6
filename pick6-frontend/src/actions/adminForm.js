@@ -21,7 +21,7 @@ export const setAdminFormData = game => {
     total: game.attributes.total,
     day: game.attributes.day,
     time: game.attributes.time,
-    winner: game.attributes.winner
+    winner: game.attributes.winner ? game.attributes.winner : ""
   }
   return {
     type: "SET_ADMIN_FORM_DATA",
