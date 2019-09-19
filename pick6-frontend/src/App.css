@@ -70,7 +70,7 @@
 
     #logo {
         display: inline-block;
-        font-size: 22px;
+        font-size: 26px;
         align-self: center;
         margin-left: 20px;
         color: rgba(255, 255, 255, 0.7);
@@ -110,10 +110,9 @@
 
         #datetime {
           display: flex;
-          color: rgba(255, 255, 255, 0.7);
-          align-self: center;
+          margin-top: 10px;
           margin-left: 40px;
-          font-size: 18px;
+          font-size: 17px;
         }
 
         .nav-links:hover {
