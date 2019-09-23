@@ -7,11 +7,13 @@ import JoinGroup from './JoinGroup.js'
 const UserShow = (props) => {
 
   return (
-    <div className="UserShow">
-      {props.currentUser ? <h2>Welcome, {props.currentUser.attributes.name}!</h2> : null }
-      {props.currentUser.id === '18' ? <Link to={`/admin`}>ADMIN Edit Games</Link> : null}
-      <Groups groups={props.groups} />
-      <JoinGroup history={props.history} />
+    <div>
+      {props.currentUser ? <><h1 className="page-title">Welcome, {props.currentUser.attributes.name}!</h1><br/></> : null }
+      {props.currentUser.id === '18' ? <><Link to={`/admin`}>ADMIN Edit Games</Link><br/><br/></> : null}
+      <div className="section shadow scroll_box">
+        <Groups groups={props.groups} />
+        <JoinGroup history={props.history} />
+      </div>
     </div>
   )
 }
