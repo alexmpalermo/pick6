@@ -26,9 +26,11 @@ class GroupShow extends React.Component {
         }
 
         {group ?
-          <><h3>{group.attributes.name}</h3>
-          <h4>${group.attributes.price}</h4>
-          <Weeks group={group} weeks={weeks} match={match} />
+          <><h1 className="page-title">{group.attributes.name}</h1>
+          <h4 className="page-title">${group.attributes.price}</h4>
+          <div className="section shadow scroll_box" id="weeks-list">
+            <Weeks group={group} weeks={weeks} match={match} />
+          </div>
           </> :
           <p>This the the Group show with no group!</p>
         }

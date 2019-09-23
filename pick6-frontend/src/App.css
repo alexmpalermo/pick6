@@ -215,6 +215,10 @@ body {
   font-size: 20px;
 }
 
+.week-name {
+  font-size: 20px;
+}
+
 /*/////////////////////////// Forms ///////////////////////////*/
 
 .input {
@@ -257,4 +261,8 @@ body {
 
 #groups-list {
   height: 310px;
+}
+
+#weeks-list {
+  width: 80%;
 }
