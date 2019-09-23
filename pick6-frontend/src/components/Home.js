@@ -5,10 +5,8 @@ const Home = () => (
   <div>
     <br/><br/>
     <h2 className="home-desc">The football spreadsheet platform for weekly bets against friends!</h2>
-    <span>
-      <br/><br/><br/>
-      <p id="signlog-button"><Link to="/signup">Sign Up</Link></p> <p className="or">-or-</p> <p id="signlog-button"><Link to="/login">Log In</Link></p>
-    </span>
+    <br/><br/><br/>
+    <p className="signlog-button"><Link className="signlog-button-link" to="/signup">Sign Up</Link></p> <p className="or">-or-</p> <p className="signlog-button"><Link className="signlog-button-link" to="/login">Log In</Link></p>
   </div>
 
 );
