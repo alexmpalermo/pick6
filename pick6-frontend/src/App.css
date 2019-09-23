@@ -196,7 +196,9 @@ body {
   text-decoration: none;
 }
 
-.home-desc {
+/*/////////////////////////// Font ///////////////////////////*/
+
+.page-title {
   color: white;
   text-shadow: 1px 1px 1px #000000
 }
@@ -210,3 +212,8 @@ body {
 }
 
 /*/////////////////////////// Forms ///////////////////////////*/
+
+.input {
+  font-size: 16px;
+  margin: 3px;
+}
