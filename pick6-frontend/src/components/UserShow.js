@@ -10,8 +10,11 @@ const UserShow = (props) => {
     <div>
       {props.currentUser ? <><h1 className="page-title">Welcome, {props.currentUser.attributes.name}!</h1><br/></> : null }
       {props.currentUser.id === '18' ? <><Link to={`/admin`}>ADMIN Edit Games</Link><br/><br/></> : null}
-      <div className="section shadow scroll_box">
+      <div className="section shadow scroll_box" id="groups-list">
         <Groups groups={props.groups} />
+      </div>
+      <br/>
+      <div className="section shadow scroll_box" id="join">
         <JoinGroup history={props.history} />
       </div>
     </div>

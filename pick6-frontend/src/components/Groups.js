@@ -6,9 +6,14 @@ const Groups = ({ groups }) => {
 
   return (
     groups.length > 0 ?
-      <div className="group-list">
+      <div>
         {groups.map((group) => {
-          return <p key={group.id}><Link to={`/groups/${group.id}`} >{group.attributes.name}</Link></p>
+          return (
+            <>
+            <h2><u>My Groups:</u></h2>
+            <p key={group.id} className="group-links"><Link to={`/groups/${group.id}`} >{group.attributes.name}</Link></p>
+            </>
+          )
           }
         )}
       </div> :
