@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
   <div>
-    <h3>The football spreadsheet platform for weekly bets against friends</h3>
+    <br/><br/>
+    <h2 className="home-desc">The football spreadsheet platform for weekly bets against friends!</h2>
     <span>
-      <p><Link to="/signup">Sign Up</Link></p> or <p><Link to="/login">Log In</Link></p>
+      <br/><br/><br/>
+      <p id="signlog-button"><Link to="/signup">Sign Up</Link></p> <p className="or">-or-</p> <p id="signlog-button"><Link to="/login">Log In</Link></p>
     </span>
-    <footer>
-      This app is not affiliated with, funded by, or in any way associated with the NFL.
-    </footer>
   </div>
 
 );

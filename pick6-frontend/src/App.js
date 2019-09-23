@@ -25,8 +25,9 @@ class App extends React.Component {
   render() {
     const { loggedIn, groups, weeks, teams, games } = this.props
     return (
-      <div className="App">
+      <div className="App background" id="page-container">
         <Navbar location={this.props.location}/>
+        <div id="content-wrap">
         <Switch>
           <Route exact path='/' render={(props)=> loggedIn ? <UserShow {...props}/> : <Home {...props}/>} />
           <Route exact path='/login' component={Login}/>
@@ -57,6 +58,10 @@ class App extends React.Component {
 
 
         </Switch>
+        </div>
+        <footer id="footer">
+          This app is not affiliated with, funded by, or in any way associated with the NFL.
+        </footer>
       </div>
     );
   }
