@@ -7,6 +7,13 @@ export const setMyWeeks = weeks => {
   }
 }
 
+export const clearWeeks = () => {
+  return {
+    type: "CLEAR_WEEKS"
+  }
+}
+
+
 // async
 
 export const getMyWeeks = (group) => {
@@ -21,6 +28,7 @@ export const getMyWeeks = (group) => {
       if (resp.error) {
         alert(resp.error)
       } else {
+        dispatch(clearWeeks())
         dispatch(setMyWeeks(resp.data))
       }
     })

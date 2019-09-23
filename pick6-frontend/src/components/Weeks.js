@@ -13,6 +13,8 @@ const Weeks = ({ group, weeks }) => {
 
   }) : null
 
+console.log(weeks)
+
   return (
     weeks.length > 0 ?
       <div className="week-list">

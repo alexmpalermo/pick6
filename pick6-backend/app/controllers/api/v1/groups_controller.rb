@@ -70,6 +70,9 @@ class Api::V1::GroupsController < ApplicationController
 
   # DELETE /groups/1
   def destroy
+    weeks = Week.all.select{|w| w.group_id == @group.id}
+    ids = weeks.collect{|w| w.id }
+    Week.destroy(ids)
     if @group.destroy
       render json: { data: "Group successfully destroyed" }, status: :ok
     else
