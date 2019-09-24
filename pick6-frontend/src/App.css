@@ -210,10 +210,24 @@ body {
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
   padding: 12px 14px 12px 14px;
-  /* background-color: linear-gradient(0deg, rgba(82,41,12,1) 0%, rgba(177,94,27,1) 100%); */
   position: absolute;
   top: 60px;
   right: 60px;
+  border-radius: 90px / 45px;
+  background-image: linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 0%), linear-gradient(0deg, rgba(82,41,12,1) 0%, rgba(177,94,27,1) 100%);
+  background-position: top;
+  background-size: 20px 4px;
+  background-repeat: repeat-x, round;
+}
+
+.admin-button {
+  margin: 40px;
+  font-size: 16px;
+  border-top: 2px double #ffffff;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 12px 14px 12px 14px;
   border-radius: 90px / 45px;
   background-image: linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 0%), linear-gradient(0deg, rgba(82,41,12,1) 0%, rgba(177,94,27,1) 100%);
   background-position: top;
