@@ -196,17 +196,31 @@ body {
   text-decoration: none;
 }
 
+.edit-button-link {
+  color: white;
+  text-decoration: none;
+}
+
 .Edit-group-button {
   display: inline;
   margin: 40px;
   font-size: 16px;
-  border: 1px solid #000000;
-  padding: 8px 12px 8px 12px;
-  background-color: white;
+  border-top: 2px double #ffffff;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 12px 14px 12px 14px;
+  /* background-color: linear-gradient(0deg, rgba(82,41,12,1) 0%, rgba(177,94,27,1) 100%); */
   position: absolute;
   top: 60px;
   right: 60px;
+  border-radius: 90px / 45px;
+  background-image: linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 0%), linear-gradient(0deg, rgba(82,41,12,1) 0%, rgba(177,94,27,1) 100%);
+  background-position: top;
+  background-size: 20px 4px;
+  background-repeat: repeat-x, round;
 }
+
 
 /*/////////////////////////// Font ///////////////////////////*/
 
@@ -229,6 +243,20 @@ body {
 
 .week-name {
   font-size: 20px;
+}
+
+.code {
+  font-weight: bold;
+  font-size: 16px;
+  line-height : 20px;
+  position: relative;
+  bottom: 20px;
+}
+
+.invite {
+  position: relative;
+  bottom: 10px;
+  line-height : 18px;
 }
 
 /*/////////////////////////// Forms ///////////////////////////*/
@@ -280,5 +308,14 @@ body {
 }
 
 .Group-code-box {
-
+  display: inline;
+  margin: 40px;
+  font-size: 12px;
+  border: 1px solid #000000;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  width: 200px;
+  height: 70px;
 }

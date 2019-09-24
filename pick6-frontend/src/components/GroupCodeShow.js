@@ -5,8 +5,8 @@ const GroupCodeShow = ({group}) => {
   return (
     <div className="Group-code-box">
       <>
-        <h4>Invite friends to join your group with this code:</h4>
-        <h3>{group.attributes.code}</h3>
+        <p className="invite">Invite friends to join your group with this code:</p>
+        <p className="code">{group.attributes.code}</p>
       </>
     </div>
   )

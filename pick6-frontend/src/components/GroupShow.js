@@ -33,7 +33,7 @@ class GroupShow extends React.Component {
       {group && parseInt(group.attributes.adminid) === parseInt(currentUser.id) ?
         <>
           <div className="Edit-group-button">
-            <Link className="signlog-button-link" to={`/groups/${group.id}/edit`}>Edit this group</Link>
+            <Link className="edit-button-link" to={`/groups/${group.id}/edit`}>Edit this group</Link>
           </div>
           <GroupCodeShow group={group} />
         </> :
