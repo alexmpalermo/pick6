@@ -281,6 +281,13 @@ body {
   line-height : 18px;
 }
 
+.game-links {
+  font-size: 20px;
+  margin: 36px;
+  line-height: 14px;
+  display: inline-block;
+}
+
 
 /*/////////////////////////// Forms ///////////////////////////*/
 
@@ -317,6 +324,11 @@ body {
   overflow: auto;
 }
 
+.admin-week-names {
+  border: black;
+  display: inline-block;
+}
+
 #join {
   padding-top: 0px;
   padding-bottom: 20px;
@@ -328,6 +340,15 @@ body {
 
 #weeks-list {
   width: 80%;
+}
+
+#admin-gamelist {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Group-code-box {
