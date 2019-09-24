@@ -20,14 +20,16 @@ class WeekShow extends React.Component {
 
     const showSomething = () => {
       if (week && currentUser) {
-        if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+        if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today >= week.attributes.games[0].day)) {
           return <WeekTable week={week} />
-        } else if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+        } else if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today >= week.attributes.games[0].day)) {
           return <MyPicks week={week} />
-        } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+        } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today >= week.attributes.games[0].day)) {
           return <WeekTable week={week} />
-        } else {
+        } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today >= week.attributes.games[0].day)) {
           return <PickSheetForm week={week}/>
+        } else {
+          return null
         }
       } else {
         return null

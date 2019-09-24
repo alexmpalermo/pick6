@@ -134,44 +134,49 @@ const WeekTable = ({week, user, teams, groups}) => {
     teams.length > 0 && groups.length > 0 ?
     <>
     <div>
-      <h2>{group.attributes.name}</h2>
-      <h2>WEEK {week.attributes.number} SPREADSHEET</h2>
-      <div>
+      <h2 className="page-title">{group.attributes.name}</h2>
+      <h2 className="page-title">WEEK {week.attributes.number} SPREADSHEET</h2>
+      <div className="section shadow scroll_box" id="week-table-box">
       <span>{allPoints.length > 0 ? userWhoWon() : null}</span>
         <table>
           <tbody>
-            <tr>
+            <tr className="home-away-spread">
               <td><strong>HOME</strong></td>
               {homes}
-              <td>.</td>
-              <td>.</td>
-              <td><strong>TOTAL WINS</strong></td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
             </tr>
-            <tr>
+            <tr className="home-away-spread">
               <td><strong>SPREAD</strong></td>
               {handicaps}
-              <td>.</td>
-              <td>.</td>
-              <td><strong>TOTAL WINS</strong></td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
             </tr>
-            <tr>
+            <tr className="home-away-spread">
               <td><strong>AWAY</strong></td>
               {aways}
+              <td> </td>
               <td><strong>POINTS</strong></td>
-              <td>.</td>
-              <td><strong>TOTAL WINS</strong></td>
+              <td> </td>
+              <td> </td>
             </tr>
-            <tr>
+            <tr className="winning-team">
               <td><strong>WINNING TEAM</strong></td>
               {winningteams}
+              <td> </td>
               <td>{finalGame.total ? finalGame.total : "."}</td>
-              <td>.</td>
+              <td> </td>
               <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>NAME</strong></td>
-              <td>.</td>
-              <td>.</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
             </tr>
             {finalpoints}
           </tbody>
