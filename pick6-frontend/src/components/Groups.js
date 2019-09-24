@@ -7,10 +7,10 @@ const Groups = ({ groups }) => {
   return (
     groups.length > 0 ?
       <div>
+        <><h2><u>My Groups:</u></h2></>
         {groups.map((group) => {
           return (
             <>
-            <h2><u>My Groups:</u></h2>
             <p key={group.id} className="group-links"><Link to={`/groups/${group.id}`} >{group.attributes.name}</Link></p>
             </>
           )

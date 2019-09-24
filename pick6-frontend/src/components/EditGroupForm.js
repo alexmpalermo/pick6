@@ -34,13 +34,14 @@ class EditGroupForm extends React.Component {
     const groupId = group ? group.id : null
     return (
       <>
+      <h1 className="page-title">Edit This Group</h1>
       <form onSubmit={this.handleSubmit}>
-        <input placeholder="name" type="text" name="name" value={formData.name} onChange={this.handleChange} /><br/>
-        <input placeholder="weekly pick sheet price" type="number" min="0" name="price" value={formData.price} onChange={this.handleChange} /><br/>
-        <input type="submit" value="Edit Group" />
+        <input placeholder="name" type="text" name="name" value={formData.name} onChange={this.handleChange} className="input"/><br/>
+        <input placeholder="weekly price" type="number" min="0" name="price" value={formData.price} onChange={this.handleChange} className="input" /><br/>
+        <input type="submit" value="Edit Group" className="input"/>
       </form>
 
-        <br/><button style={{color: "red"}} onClick={()=>deleteGroup(groupId, history)}>Delete this group</button>
+        <br/><button className="input delete-button" onClick={()=>deleteGroup(groupId, history)}>Delete this group</button>
       </>
     )
   }

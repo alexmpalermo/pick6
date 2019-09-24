@@ -221,6 +221,11 @@ body {
   background-repeat: repeat-x, round;
 }
 
+.delete-button {
+  color: red;
+  border: 2px double red;
+}
+
 
 /*/////////////////////////// Font ///////////////////////////*/
 
