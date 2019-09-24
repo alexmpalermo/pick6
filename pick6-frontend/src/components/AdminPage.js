@@ -11,11 +11,11 @@ const AdminPage = props => {
         const homet = props.teams.find(t => t.attributes.number === parseInt(game.attributes.home))
         const awayt = props.teams.find(t => t.attributes.number === parseInt(game.attributes.away))
         return (
-          <p key={game.id} className="game-links">
+          <span key={game.id} className="game-links">
             <Link to={`/games/${game.id}/edit`}>
             {homet.attributes.abrv} v {awayt.attributes.abrv}
             </Link>
-          </p>
+          </span>
         )
       }))
     } else {
