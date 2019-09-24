@@ -17,15 +17,15 @@ class WeekShow extends React.Component {
   render(){
     const { week, currentUser } = this.props
     const today = moment().format('YYYY-MM-DD')
-    const showSomething = () => {
-      if (week) {
-        if (currentUser && currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id))) {
-          if (today > week.attributes.games[0].day || today === week.attributes.games[0].day){
-            return <WeekTable week={week} />
-          } else {
-            return <MyPicks week={week} />
 
-          }
+    const showSomething = () => {
+      if (week && currentUser) {
+        if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+          return <WeekTable week={week} />
+        } else if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+          return <MyPicks week={week} />
+        } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today > week.attributes.games[0].day || today === week.attributes.games[0].day)) {
+          return <WeekTable week={week} />
         } else {
           return <PickSheetForm week={week}/>
         }
