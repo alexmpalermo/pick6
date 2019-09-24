@@ -20,20 +20,25 @@ class GroupShow extends React.Component {
 
     return (
       <div className="group-show">
-        {group && parseInt(group.attributes.adminid) === parseInt(currentUser.id) ?
-          <><Link to={`/groups/${group.id}/edit`}>Edit this group</Link><GroupCodeShow group={group} /></> :
-          null
-        }
+      {group ?
+        <><h1 className="page-title">{group.attributes.name}</h1>
+        <h4 className="page-title">${group.attributes.price}</h4>
+        <div className="section shadow scroll_box" id="weeks-list">
+          <Weeks group={group} weeks={weeks} match={match} />
+        </div>
+        </> :
+        <p>This the the Group show with no group!</p>
+      }
 
-        {group ?
-          <><h1 className="page-title">{group.attributes.name}</h1>
-          <h4 className="page-title">${group.attributes.price}</h4>
-          <div className="section shadow scroll_box" id="weeks-list">
-            <Weeks group={group} weeks={weeks} match={match} />
+      {group && parseInt(group.attributes.adminid) === parseInt(currentUser.id) ?
+        <>
+          <div className="Edit-group-button">
+            <Link className="signlog-button-link" to={`/groups/${group.id}/edit`}>Edit this group</Link>
           </div>
-          </> :
-          <p>This the the Group show with no group!</p>
-        }
+          <GroupCodeShow group={group} />
+        </> :
+        null
+      }
       </div>
     )
   }
