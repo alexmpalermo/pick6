@@ -22,10 +22,15 @@ const Weeks = ({ group, weeks }) => {
     weeks.length > 0 ?
       <div className="week-list">
         <h3>Current Week: <Link to={`/weeks/${actualWeekNumber()}`}> Week {actualWeekNumber()}</Link></h3>
+        <span className="weeks-list-flexbox">
         {weeks.map((week) => {
-          return <p key={week.id} className="week-name"><Link to={`/weeks/${week.id}`}> Week {week.attributes.number}</Link></p>
-          }
+          if (week.attributes.number !== actualWeekNumber()) {
+            return <p key={week.id} className="week-name"><Link to={`/weeks/${week.id}`}> Week {week.attributes.number}</Link></p>
+          } else {
+            return null
+          }}
         )}
+        </span>
       </div> :
       <p>Something went wrong! This group has no weeks.</p>
   )

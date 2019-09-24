@@ -243,6 +243,9 @@ body {
 
 .week-name {
   font-size: 20px;
+  margin: 36px;
+  line-height: 14px;
+  display: inline-block;
 }
 
 .code {
@@ -258,6 +261,7 @@ body {
   bottom: 10px;
   line-height : 18px;
 }
+
 
 /*/////////////////////////// Forms ///////////////////////////*/
 
@@ -318,4 +322,12 @@ body {
   left: 40px;
   width: 200px;
   height: 70px;
+}
+
+.weeks-list-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
