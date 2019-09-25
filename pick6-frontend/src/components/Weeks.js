@@ -18,10 +18,14 @@ const Weeks = ({ group, weeks }) => {
     }
   }
 
+  const currWeekObj = weeks.length > 0 ?
+    weeks.find(week => week.attributes.number === actualWeekNumber())
+    : null
+
   return (
     weeks.length > 0 ?
       <div className="week-list">
-        <h3>Current Week: <Link to={`/weeks/${actualWeekNumber()}`}> Week {actualWeekNumber()}</Link></h3>
+        <h3>Current Week: <Link to={`/weeks/${currWeekObj.id}`}> Week {actualWeekNumber()}</Link></h3>
         <span className="weeks-list-flexbox">
         {weeks.map((week) => {
           if (week.attributes.number !== actualWeekNumber()) {
