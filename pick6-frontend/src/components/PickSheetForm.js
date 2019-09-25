@@ -51,21 +51,21 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
       <div className="pick-form">
         <table className="pick-sheet-teams">
           <thead>
-          <tr>
+          <tr className="h-a-s">
             <th>Home</th>
             <th>Spread</th>
             <th>Away</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody className="teams-table-rows">
           {week.attributes.games.map(game => {
             const home = teams.find(team => team.attributes.number === game.home)
             const away = teams.find(team => team.attributes.number === game.away)
             return (
               <tr key={home.id}>
-                <td>{home.attributes.name}</td>
+                <td id="first_td">{home.attributes.name}</td>
                 <td>{game.handicap}</td>
-                <td>{away.attributes.name}</td>
+                <td id="last_td">{away.attributes.name}</td>
               </tr>
             )
           })}
@@ -79,14 +79,14 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
           const home = teams.find(team => team.attributes.number === game.home)
           const away = teams.find(team => team.attributes.number === game.away)
           return (
-            <><select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'} className="input select-option">
+            <React.Fragment key={home.id}><select name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'} className="input select-option">
               <option value='DEFAULT' disabled>Choose a team...</option>
               <option value={home.attributes.number}>{home.attributes.abrv}</option>
               <option value={away.attributes.number}>{away.attributes.abrv}</option>
-            </select><br/></>
+            </select><br/></React.Fragment>
           )
         })}
-        <input placeholder="tiebreaker" type="number" min="0" name="tiebreaker" value={formData.tiebreaker} onChange={handleTieChange} className="input"/><br/>
+        <input placeholder="tiebreaker" type="number" min="0" name="tiebreaker" value={formData.tiebreaker} onChange={handleTieChange} className="input tiebreaker"/><br/>
         <input type="submit" value="Submit Picks" disabled={!(teamsArr.length === week.attributes.games.length)} className="input"/>
         </form>
       </div>

@@ -138,7 +138,7 @@ const WeekTable = ({week, user, teams, groups}) => {
       <h2 className="page-title">WEEK {week.attributes.number} SPREADSHEET</h2>
       <div className="section shadow scroll_box" id="week-table-box">
       <span>{allPoints.length > 0 ? userWhoWon() : null}</span>
-        <table>
+        <table className="weekTable">
           <tbody>
             <tr className="home-away-spread">
               <td><strong>HOME</strong></td>
