@@ -6,6 +6,7 @@ const WeekTable = ({week, user, teams, groups}) => {
   const finalGame = week.attributes.games[week.attributes.games.length - 1]
   const winners = []
   const allPoints = []
+  const colspanLength = week.attributes.games.length
   const gamesInOrder = week.attributes.games.sort((a, b) => a.day > b.day);
 
   const homes = teams.length > 0 ?
@@ -138,15 +139,15 @@ const WeekTable = ({week, user, teams, groups}) => {
       <h2 className="page-title">WEEK {week.attributes.number} SPREADSHEET</h2>
       <div className="section shadow scroll_box" id="week-table-box">
       <span>{allPoints.length > 0 ? userWhoWon() : null}</span>
-        <table className="weekTable">
+        <table className="weekTable" align="center">
           <tbody>
             <tr className="home-away-spread">
               <td><strong>HOME</strong></td>
               {homes}
-              <td rowSpan="3" id="rs-empty"></td>
+              <td rowSpan="5" id="rs-empty"></td>
               <td rowSpan="3" id="rs-name"><strong>POINTS</strong></td>
-              <td rowSpan="4" id="rs-empty"></td>
-              <td rowSpan="4" id="rs-name"><strong>TOTAL WINS</strong></td>
+              <td rowSpan="5" id="rs-empty"></td>
+              <td rowSpan="5" id="rs-name"><strong>TOTAL WINS</strong></td>
             </tr>
             <tr className="home-away-spread">
               <td><strong>SPREAD</strong></td>
@@ -159,14 +160,12 @@ const WeekTable = ({week, user, teams, groups}) => {
             <tr className="winning-team">
               <td><strong>WINNING TEAM</strong></td>
               {winningteams}
-              <td></td>
               <td>{finalGame.total ? finalGame.total : "."}</td>
             </tr>
             <tr>
-              <td><strong>NAME</strong></td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
+              <td id="rs-name"><strong>NAME</strong></td>
+              <td colSpan={colspanLength} id="rs-name"></td>
+              <td id="rs-name"></td>
             </tr>
             {finalpoints}
           </tbody>

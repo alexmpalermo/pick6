@@ -372,8 +372,9 @@ body {
 }
 
 #week-table-box {
-  width: 80%;
+  width: 90%;
   max-height: 500px;
+  padding: 20px;
 }
 
 #pick-form-brown-box {
@@ -421,6 +422,15 @@ table.weekTable tr:nth-child(even):not(.home-away-spread, .winning-team) {
   background-color: #f2f2f2;
 }
 
+table.weekTable {
+  border-collapse: collapse;
+}
+
+table.weekTable td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
 .home-away-spread {
   background-color: pink;
 }
@@ -460,8 +470,10 @@ table.pick-sheet-teams tr:nth-child(even):not(.h-a-s){
 td#rs-name {
   vertical-align:bottom;
   text-align:center;
+  background-color: lightblue;
 }
 
 td#rs-empty {
-  padding: 4px;
+  padding: 1px;
+  background-color: black;
 }
