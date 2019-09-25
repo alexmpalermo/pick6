@@ -46,8 +46,8 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
   return (
     teams.length > 0 ?
     <>
-    <h2>Week {week.attributes.number} Pick Sheet</h2>
-    <div>
+    <h2 className="page-title">Week {week.attributes.number} Pick Sheet</h2>
+    <div className="shadow section scroll_box" id="pick-form-brown-box">
       <div className="pick-table">
         <table>
           <thead>
@@ -73,20 +73,21 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
         </table>
       </div>
       <div className="pick-form">
+        <p className="my-picks-p">My picks:</p>
         <form onSubmit={handleSubmit}>
         {week.attributes.games.map((game, i) => {
           const home = teams.find(team => team.attributes.number === game.home)
           const away = teams.find(team => team.attributes.number === game.away)
           return (
-            <select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'}>
+            <><select key={home.id} name={'team-'+ i} onChange={handleTeamChange} multiple={false} defaultValue={'DEFAULT'} className="input select-option">
               <option value='DEFAULT' disabled>Choose a team...</option>
               <option value={home.attributes.number}>{home.attributes.abrv}</option>
               <option value={away.attributes.number}>{away.attributes.abrv}</option>
-            </select>
+            </select><br/></>
           )
         })}
-        <input placeholder="tiebreaker" type="number" min="0" name="tiebreaker" value={formData.tiebreaker} onChange={handleTieChange} /><br/>
-        <input type="submit" value="Submit Picks" disabled={!(teamsArr.length === week.attributes.games.length)}/>
+        <input placeholder="tiebreaker" type="number" min="0" name="tiebreaker" value={formData.tiebreaker} onChange={handleTieChange} className="input"/><br/>
+        <input type="submit" value="Submit Picks" disabled={!(teamsArr.length === week.attributes.games.length)} className="input"/>
         </form>
       </div>
 
