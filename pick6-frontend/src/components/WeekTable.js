@@ -143,34 +143,24 @@ const WeekTable = ({week, user, teams, groups}) => {
             <tr className="home-away-spread">
               <td><strong>HOME</strong></td>
               {homes}
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
+              <td rowSpan="3" id="rs-empty"></td>
+              <td rowSpan="3" id="rs-name"><strong>POINTS</strong></td>
+              <td rowSpan="4" id="rs-empty"></td>
+              <td rowSpan="4" id="rs-name"><strong>TOTAL WINS</strong></td>
             </tr>
             <tr className="home-away-spread">
               <td><strong>SPREAD</strong></td>
               {handicaps}
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
             </tr>
             <tr className="home-away-spread">
               <td><strong>AWAY</strong></td>
               {aways}
-              <td> </td>
-              <td><strong>POINTS</strong></td>
-              <td> </td>
-              <td> </td>
             </tr>
             <tr className="winning-team">
               <td><strong>WINNING TEAM</strong></td>
               {winningteams}
-              <td> </td>
+              <td></td>
               <td>{finalGame.total ? finalGame.total : "."}</td>
-              <td> </td>
-              <td><strong>TOTAL WINS</strong></td>
             </tr>
             <tr>
               <td><strong>NAME</strong></td>

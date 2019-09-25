@@ -48,8 +48,8 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
     <>
     <h2 className="page-title">Week {week.attributes.number} Pick Sheet</h2>
     <div className="shadow section scroll_box" id="pick-form-brown-box">
-      <div className="pick-table">
-        <table>
+      <div className="pick-form">
+        <table className="pick-sheet-teams">
           <thead>
           <tr>
             <th>Home</th>

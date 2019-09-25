@@ -313,12 +313,7 @@ body {
 .pick-form {
   border: 2px solid black;
   display: inline;
-
-}
-
-.pick-table {
-  border: 2px solid black;
-  display: inline;
+  padding: 10px;
 }
 
 .select-option {
@@ -377,11 +372,11 @@ body {
 }
 
 #pick-form-brown-box {
-  width: 80%;
-  max-height: 550px;
+  width: 70%;
+  max-height: 570px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 #admin-gamelist {
@@ -429,6 +424,20 @@ tr:not(.home-away-spread, .winning-team):nth-child(even) {
   background-color: yellow;
 }
 
-.pick-table th {
+.pick-form th {
   font-size: 20px;
+}
+
+table.pick-sheet-teams tr {
+  padding: 3px;
+  border-bottom: 1px solid black;
+}
+
+td#rs-name {
+  vertical-align:bottom;
+  text-align:center;
+}
+
+td#rs-empty {
+  padding: 4px;
 }
