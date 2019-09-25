@@ -42,7 +42,7 @@ const WeekTable = ({week, user, teams, groups}) => {
     const key2 = `${g.id}b${i}`
     return (
       parseInt(g.winner) > 0 ?
-      <td key={key}>{winAdd()}</td>
+      <td key={key}><strong>{winAdd()}</strong></td>
       : <td key={key2}> - </td>
     )
   }) : null
@@ -142,25 +142,25 @@ const WeekTable = ({week, user, teams, groups}) => {
         <table className="weekTable" align="center">
           <tbody>
             <tr className="home-away-spread">
-              <td><strong>HOME</strong></td>
+              <td id="rs-name"><strong>HOME</strong></td>
               {homes}
               <td rowSpan="5" id="rs-empty"></td>
-              <td rowSpan="3" id="rs-name"><strong>POINTS</strong></td>
+              <td rowSpan="3" id="rs-name"><strong>FINAL SCORE</strong></td>
               <td rowSpan="5" id="rs-empty"></td>
               <td rowSpan="5" id="rs-name"><strong>TOTAL WINS</strong></td>
             </tr>
             <tr className="home-away-spread">
-              <td><strong>SPREAD</strong></td>
+              <td id="rs-name"><strong>SPREAD</strong></td>
               {handicaps}
             </tr>
             <tr className="home-away-spread">
-              <td><strong>AWAY</strong></td>
+              <td id="rs-name"><strong>AWAY</strong></td>
               {aways}
             </tr>
             <tr className="winning-team">
               <td><strong>WINNING TEAM</strong></td>
               {winningteams}
-              <td>{finalGame.total ? finalGame.total : "."}</td>
+              <td><strong>{finalGame.total ? finalGame.total : "."}</strong></td>
             </tr>
             <tr>
               <td id="rs-name"><strong>NAME</strong></td>

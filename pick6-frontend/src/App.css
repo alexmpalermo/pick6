@@ -432,7 +432,7 @@ table.weekTable td {
 }
 
 .home-away-spread {
-  background-color: pink;
+  background-color: #ffcc80;
 }
 
 .winning-team {
@@ -470,7 +470,7 @@ table.pick-sheet-teams tr:nth-child(even):not(.h-a-s){
 td#rs-name {
   vertical-align:bottom;
   text-align:center;
-  background-color: lightblue;
+  background-color: #ffa31a;
 }
 
 td#rs-empty {
