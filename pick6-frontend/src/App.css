@@ -439,7 +439,10 @@ table.weekTable tr:nth-child(even):not(.home-away-spread, .winning-team) {
 
 table.pick-sheet-teams tr {
   line-height: 27px;
-  border-bottom: 1px solid black;
+}
+
+table.pick-sheet-teams td:not(.h-a-s) {
+  border: 1px solid black;
 }
 
 table.pick-sheet-teams {
