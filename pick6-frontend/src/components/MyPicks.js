@@ -3,27 +3,24 @@ import { connect } from 'react-redux'
 
 const MyPicks = ({week, teams, user}) => {
 
-  const finalGame = week.attributes.games[week.attributes.games.length - 1]
-  const finalHome = teams.find(team => team.attributes.number === finalGame.home)
-  const finalAway = teams.find(team => team.attributes.number === finalGame.away)
   const picks = user.attributes.picks.find(p => p.week_id === parseInt(week.id))
 
   return (
     teams.length > 0 ?
     <>
-    <h2>My Week {week.attributes.number} Picks:</h2>
-    <div>
-      <div className="my-picks">
-        <table>
+    <h2 className="page-title">My Week {week.attributes.number} Picks:</h2>
+    <div className="shadow section scroll_box" id="pick-form-brown-box">
+      <div className="pick-form">
+        <table className="pick-sheet-teams">
           <thead>
-          <tr>
+          <tr className="h-a-s">
             <th>Home</th>
             <th>Spread</th>
             <th>Away</th>
             <th>My picks</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody className="teams-table-rows">
           {week.attributes.games.map(game => {
             const home = teams.find(team => team.attributes.number === game.home)
             const away = teams.find(team => team.attributes.number === game.away)
@@ -34,15 +31,13 @@ const MyPicks = ({week, teams, user}) => {
                 <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
                 <td>{away.attributes.name}</td>
-                <td>{myPick.abrv}</td>
+                <td><strong>{myPick.abrv}</strong></td>
               </tr>
             )
           })}
           <tr>
-            <td>{finalHome.attributes.name}</td>
-            <td>{finalGame.handicap}</td>
-            <td>{finalAway.attributes.name}</td>
-            <td>{picks.tiebreaker}</td>
+            <td colSpan="3"><strong>Tiebreaker</strong></td>
+            <td><strong>{picks.tiebreaker}</strong></td>
           </tr>
           </tbody>
         </table>

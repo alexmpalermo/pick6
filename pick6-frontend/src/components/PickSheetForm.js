@@ -63,9 +63,9 @@ const PickSheetForm = ({teams, teamsArr, week, userId, formData, updatePickSheet
             const away = teams.find(team => team.attributes.number === game.away)
             return (
               <tr key={home.id}>
-                <td id="first_td">{home.attributes.name}</td>
+                <td>{home.attributes.name}</td>
                 <td>{game.handicap}</td>
-                <td id="last_td">{away.attributes.name}</td>
+                <td>{away.attributes.name}</td>
               </tr>
             )
           })}
