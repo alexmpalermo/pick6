@@ -474,7 +474,6 @@ table.pick-sheet-teams tr:nth-child(even):not(.h-a-s){
 td#rs-name {
   vertical-align:bottom;
   text-align:center;
-  /* background-color: #ffa31a; */
   background-color: #639f60;
 }
 
@@ -492,6 +491,12 @@ td#rs-name-nb2 {
   background-color: #639f60;
 }
 
+td#rs-name-yellow {
+  vertical-align:bottom;
+  text-align:center;
+  background-color: yellow;
+}
+
 td#rs-empty {
   padding: 1px;
   background-color: black;
@@ -502,4 +507,9 @@ td#rs-empty-green {
   background-color: #639f60;
   border-left: none;
   border-right: none;
+}
+
+td#winning-square {
+  background-color: yellow;
+  font-weight: bold;
 }

@@ -53,9 +53,9 @@ const WeekTable = ({week, user, teams, groups}) => {
       if (userWins.length > 0) {
         allPoints.push(userWins.length)
         pick.points = userWins.length
-        return pick.points
+        return (<td id="winning-square"><strong>{pick.points}</strong></td>)
       } else {
-        return 0
+        return (<td id="winning-square"><strong>0</strong></td>)
       }
     }
     const key4 = `${pick.id}a${i}`
@@ -72,21 +72,19 @@ const WeekTable = ({week, user, teams, groups}) => {
         <td>{pick.username}</td>
         {picksInOrder.map((t, i) => {
           const pointAdd = () => {
+            const key3 = `${t.id}a${i}`
             if (winners.includes(t.number)) {
               userWins.push(t.number)
-              return (t.abrv)
+              return (<td key={key3} id="winning-square">{t.abrv}</td>)
             } else {
-              return (t.abrv)
+              return (<td key={key3}>{t.abrv}</td>)
             }
           }
-          const key3 = `${t.id}a${i}`
-          return (
-            <td key={key3}>{pointAdd()}</td>
-          )
+          return (pointAdd())
         })}
         <td>{pick.tiebreaker}</td>
         <td id="rs-empty"></td>
-        <td><strong>{pointsTotal()}</strong></td>
+        {pointsTotal()}
       </tr>
     )
   })
@@ -168,7 +166,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td colSpan={colspanLength} id="rs-name"></td>
               <td id="rs-name"><strong>FINAL SCORE</strong></td>
               <td id="rs-empty"></td>
-              <td id="rs-name"><strong>TOTAL WINS</strong></td>
+              <td id="rs-name-yellow"><strong>TOTAL WINS</strong></td>
             </tr>
 
             {finalpoints}
