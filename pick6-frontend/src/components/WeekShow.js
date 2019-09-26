@@ -17,11 +17,17 @@ class WeekShow extends React.Component {
   render(){
     const { week, currentUser } = this.props
     const today = moment().format('YYYY-MM-DD')
+    const time = moment().format('HH:mm:ss')
 
     const showSomething = () => {
       if (week && currentUser) {
+        const gameTime = (moment(week.attributes.games[0].time)._i).substr(11, 8)
         if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today >= week.attributes.games[0].day)) {
-          return <WeekTable week={week} />
+          if ((today === week.attributes.games[0].day) && (time < gameTime)) {
+            return <MyPicks week={week} />
+          } else {
+            return <WeekTable week={week} />
+          }
         } else if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today >= week.attributes.games[0].day)) {
           return <MyPicks week={week} />
         } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today >= week.attributes.games[0].day)) {
