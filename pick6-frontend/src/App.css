@@ -418,10 +418,6 @@ body {
 
 /*///////////////////// TABLE ELEMENTS /////////////////////////////*/
 
-table.weekTable tr:nth-child(even):not(.home-away-spread, .winning-team) {
-  background-color: #f2f2f2;
-}
-
 table.weekTable {
   border-collapse: collapse;
 }
@@ -431,11 +427,19 @@ table.weekTable td {
   padding: 5px;
 }
 
-.home-away-spread {
-  background-color: #ffcc80;
+table.weekTable tr:nth-child(even) {
+  background-color: #9cc29a;
 }
 
-.winning-team {
+table.weekTable tr:nth-child(odd) {
+  background-color: #d5e7d4;
+}
+
+/* table.weekTable tr.home-away-spread {
+  background-color: #ffcc80;
+} */
+
+table.weekTable tr.winning-team {
   background-color: yellow;
 }
 
@@ -470,10 +474,32 @@ table.pick-sheet-teams tr:nth-child(even):not(.h-a-s){
 td#rs-name {
   vertical-align:bottom;
   text-align:center;
-  background-color: #ffa31a;
+  /* background-color: #ffa31a; */
+  background-color: #639f60;
+}
+
+td#rs-name-nb1 {
+  vertical-align:bottom;
+  text-align:center;
+  border-right: none;
+  background-color: #639f60;
+}
+
+td#rs-name-nb2 {
+  vertical-align:bottom;
+  text-align:center;
+  border-left: none;
+  background-color: #639f60;
 }
 
 td#rs-empty {
   padding: 1px;
   background-color: black;
+}
+
+td#rs-empty-green {
+  padding: 1px;
+  background-color: #639f60;
+  border-left: none;
+  border-right: none;
 }

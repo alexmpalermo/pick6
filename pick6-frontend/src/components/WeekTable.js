@@ -85,7 +85,7 @@ const WeekTable = ({week, user, teams, groups}) => {
           )
         })}
         <td>{pick.tiebreaker}</td>
-        <td>.</td>
+        <td id="rs-empty"></td>
         <td><strong>{pointsTotal()}</strong></td>
       </tr>
     )
@@ -144,10 +144,9 @@ const WeekTable = ({week, user, teams, groups}) => {
             <tr className="home-away-spread">
               <td id="rs-name"><strong>HOME</strong></td>
               {homes}
-              <td rowSpan="5" id="rs-empty"></td>
-              <td rowSpan="3" id="rs-name"><strong>FINAL SCORE</strong></td>
-              <td rowSpan="5" id="rs-empty"></td>
-              <td rowSpan="5" id="rs-name"><strong>TOTAL WINS</strong></td>
+              <td rowSpan="3" id="rs-name-nb1"></td>
+              <td rowSpan="3" id="rs-empty-green"></td>
+              <td rowSpan="3" id="rs-name-nb2"></td>
             </tr>
             <tr className="home-away-spread">
               <td id="rs-name"><strong>SPREAD</strong></td>
@@ -161,13 +160,19 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td><strong>WINNING TEAM</strong></td>
               {winningteams}
               <td><strong>{finalGame.total ? finalGame.total : "."}</strong></td>
+              <td id="rs-empty"></td>
+              <td></td>
             </tr>
-            <tr>
+            <tr className="name-row">
               <td id="rs-name"><strong>NAME</strong></td>
               <td colSpan={colspanLength} id="rs-name"></td>
-              <td id="rs-name"></td>
+              <td id="rs-name"><strong>FINAL SCORE</strong></td>
+              <td id="rs-empty"></td>
+              <td id="rs-name"><strong>TOTAL WINS</strong></td>
             </tr>
+
             {finalpoints}
+
           </tbody>
         </table>
       </div>
@@ -185,3 +190,7 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(WeekTable)
+
+// <tbody className="members-table">
+// {finalpoints}
+// </tbody>
