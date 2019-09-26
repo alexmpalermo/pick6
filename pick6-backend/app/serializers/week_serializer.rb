@@ -12,7 +12,8 @@ class WeekSerializer
       away: game.away.to_i,
       handicap: game.handicap,
       hscore: game.hscore,
-      ascore: game.ascore
+      ascore: game.ascore,
+      spread: game.spread
     }
     end
   end

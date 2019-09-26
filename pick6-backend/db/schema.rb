@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_210739) do
+ActiveRecord::Schema.define(version: 2019_09_26_223819) do
 
-  create_table "games", force: :cascade do |t|
-    t.date "day"
-    t.time "time"
-    t.string "winner"
-    t.integer "total"
-    t.string "home"
-    t.string "away"
-    t.integer "handicap"
-    t.integer "hscore"
-    t.integer "ascore"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "games" because of following StandardError
+#   Unknown type 'real' for column 'spread'
 
   create_table "games_weeks", id: false, force: :cascade do |t|
     t.string "week_id"

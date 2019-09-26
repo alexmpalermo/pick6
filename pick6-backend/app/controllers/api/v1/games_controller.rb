@@ -48,6 +48,6 @@ class Api::V1::GamesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def game_params
-      params.require(:game).permit(:day, :time, :winner, :total, :home, :away, :handicap, :hscore, :ascore)
+      params.require(:game).permit(:day, :time, :winner, :total, :home, :away, :handicap, :hscore, :ascore, :spread)
     end
 end
