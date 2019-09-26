@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_223819) do
+ActiveRecord::Schema.define(version: 2019_09_26_224847) do
 
 # Could not dump table "games" because of following StandardError
 #   Unknown type 'real' for column 'spread'
