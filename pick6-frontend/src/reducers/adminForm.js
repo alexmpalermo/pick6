@@ -3,7 +3,7 @@ const initialState = {
   away: "",
   hscore: "",
   ascore: "",
-  handicap: "",
+  spread: "",
   total: "",
   day: "",
   time: "",

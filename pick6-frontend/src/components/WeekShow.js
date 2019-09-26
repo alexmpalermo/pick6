@@ -31,7 +31,11 @@ class WeekShow extends React.Component {
         } else if (currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today >= week.attributes.games[0].day)) {
           return <MyPicks week={week} />
         } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && (today >= week.attributes.games[0].day)) {
-          return <WeekTable week={week} />
+          if ((today === week.attributes.games[0].day) && (time < gameTime)) {
+            return <PickSheetForm week={week}/>
+          } else {
+            return <WeekTable week={week} />
+          }
         } else if (!currentUser.attributes.picks.find(p => p.week_id === parseInt(week.id)) && !(today >= week.attributes.games[0].day)) {
           return <PickSheetForm week={week}/>
         } else {

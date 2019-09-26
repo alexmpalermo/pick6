@@ -29,7 +29,7 @@ const MyPicks = ({week, teams, user}) => {
             return (
               <tr key={home.id}>
                 <td>{home.attributes.name}</td>
-                <td>{game.handicap}</td>
+                <td>{game.spread}</td>
                 <td>{away.attributes.name}</td>
                 <td><strong>{myPick.abrv}</strong></td>
               </tr>

@@ -17,7 +17,7 @@ export const setAdminFormData = game => {
     away: game.attributes.away,
     hscore: game.attributes.hscore,
     ascore: game.attributes.ascore,
-    handicap: game.attributes.handicap,
+    spread: game.attributes.spread,
     total: game.attributes.total,
     day: game.attributes.day,
     time: game.attributes.time,

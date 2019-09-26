@@ -46,7 +46,7 @@ export const updateGame = (gameData) => {
       away: gameData.away,
       hscore: gameData.hscore,
       ascore: gameData.ascore,
-      handicap: gameData.handicap,
+      spread: gameData.spread,
       total: gameData.total,
       day: gameData.day,
       time: gameData.time,

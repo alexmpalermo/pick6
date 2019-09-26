@@ -17,9 +17,9 @@ const WeekTable = ({week, user, teams, groups}) => {
     )
   }) : null
 
-  const handicaps = gamesInOrder.map((g, i) => {
+  const spreads = gamesInOrder.map((g, i) => {
     return (
-      <td key={i}>{g.handicap}</td>
+      <td key={i}>{g.spread}</td>
     )
   })
 
@@ -148,7 +148,7 @@ const WeekTable = ({week, user, teams, groups}) => {
             </tr>
             <tr className="home-away-spread">
               <td id="rs-name"><strong>SPREAD</strong></td>
-              {handicaps}
+              {spreads}
             </tr>
             <tr className="home-away-spread">
               <td id="rs-name"><strong>AWAY</strong></td>
@@ -168,9 +168,7 @@ const WeekTable = ({week, user, teams, groups}) => {
               <td id="rs-empty"></td>
               <td id="rs-name-yellow"><strong>TOTAL WINS</strong></td>
             </tr>
-
             {finalpoints}
-
           </tbody>
         </table>
       </div>
@@ -188,7 +186,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(WeekTable)
-
-// <tbody className="members-table">
-// {finalpoints}
-// </tbody>
