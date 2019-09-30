@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import moment from "moment";
 
 const WeekTable = ({week, user, teams, groups}) => {
   const group = groups ? groups.find(group => group.id === week.relationships.group.data.id) : null
@@ -92,14 +93,15 @@ const WeekTable = ({week, user, teams, groups}) => {
   const userWhoWon = () => {
     const max = Math.max(...allPoints)
     const picksMax = week.attributes.picks.filter(p => p.points === max)
+    const today = moment().format('YYYY-MM-DD')
 
-    if (picksMax.length === 1) {
+    if (picksMax.length === 1 && today > finalGame.day) {
       return (
         <><h3>This Week's Winner Is: </h3>
         <h3>{picksMax[0].username}</h3>
         </>
       )
-    } else if (picksMax.length > 1) {
+    } else if (picksMax.length > 1 && today > finalGame.day) {
       const tiebreakers = picksMax.map(pick => pick.tiebreaker)
       const closest = tiebreakers.reduce((prev, curr) => {
         return (Math.abs(curr - finalGame.total) < Math.abs(prev - finalGame.total) ? curr : prev);
